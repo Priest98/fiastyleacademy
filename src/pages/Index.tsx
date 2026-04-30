@@ -44,7 +44,7 @@ export default function Index() {
           <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white" />
         </motion.div>
 
-        <div className="container relative z-10 text-left">
+        <div className="container relative z-10 text-left pt-32 md:pt-40">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}

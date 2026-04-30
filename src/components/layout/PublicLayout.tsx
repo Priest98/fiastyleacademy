@@ -6,7 +6,7 @@ export default function PublicLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <IslandHeader />
-      <main className="pt-24">{children}</main>
+      <main>{children}</main>
       <Footer />
       
       {/* Sticky Mobile CTA */}
