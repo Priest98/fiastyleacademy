@@ -1,7 +1,7 @@
 import PublicLayout from "@/components/layout/PublicLayout";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import FadeIn from "@/components/animations/FadeIn";
 import a1 from "@/assets/student-work/a1.jpeg";
 import a2 from "@/assets/student-work/a2.jpeg";
@@ -75,26 +75,69 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Social Proof / Stats Section */}
-      <section className="py-20 border-y border-black/5 bg-neutral-50/50">
-        <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-            {[
-              { label: "Students Trained", value: "1,000+" },
-              { label: "Success Rate", value: "95%" },
-              { label: "Course Modules", value: "24+" },
-              { label: "Global Reach", value: "12+ Countries" }
-            ].map((stat, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <div className="space-y-2">
-                  <p className="font-display text-3xl md:text-5xl uppercase tracking-tighter text-gold">{stat.value}</p>
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-medium">{stat.label}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
+       {/* TRANSFORMATION LOOKBOOK: Editorial Showcase */}
+       <section className="bg-black text-white">
+         {/* Section Header */}
+         <div className="container section-padding-lg">
+           <FadeIn>
+             <div className="max-w-4xl">
+               <span className="label text-gold mb-6 block tracking-[0.35em]">The Transformation</span>
+               <h1 className="text-4xl md:text-6xl uppercase leading-none tracking-tight">
+                 Created by our <br />
+                 <span className="italic text-gold">Elite Graduates</span>
+               </h1>
+             </div>
+           </FadeIn>
+         </div>
+
+         {/* Lookbook Grid */}
+         <div className="container -mt-12">
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+             {[
+               {
+                 image: a1,
+                 title: "Signature Couture",
+                 description: "Master-level construction with precision-cut panels and hand-applied embellishment.",
+                 program: "Advanced Class '25"
+               },
+               {
+                 image: w1,
+                 title: "Asoebi Mastery",
+                 description: "Traditional elegance meets modern tailoring in communal celebration wear.",
+                 program: "Professional Class '25"
+               },
+               {
+                 image: a3,
+                 title: "Master Corsetry",
+                 description: "Heritage boning techniques reimagined in a sculptural, modern silhouette.",
+                 program: "Corsetry Masterclass '25"
+               },
+               {
+                 image: w2,
+                 title: "Structural Tailoring",
+                 description: "Geometric mastery in tailored suiting — where every seam is a design decision.",
+                 program: "Intermediate Class '25"
+               },
+               {
+                 image: a2,
+                 title: "Modern Silhouette",
+                 description: "Clean, confident, and contemporary — designed for the global stage.",
+                 program: "Intermediate Class '25"
+               },
+               {
+                 image: w3,
+                 title: "Fabric Innovation",
+                 description: "Advanced textile manipulation and Surface manipulation techniques.",
+                 program: "Professional Class '25"
+               },
+             ].map((item, i) => (
+               <FadeIn key={i} direction="up" delay={i * 0.06}>
+                 <LookbookItem item={item} />
+               </FadeIn>
+             ))}
+           </div>
+         </div>
+       </section>
 
       {/* Brand Introduction Section */}
       <section className="py-40 bg-white">
@@ -310,6 +353,125 @@ export default function Index() {
         </div>
       </section>
     </PublicLayout>
+   );
+ }
+
+// ── Lookbook Item (Transformation Showcase) ───────────────────────────────────
+function LookbookItem({ item }: { 
+  item: {
+    image: string;
+    title: string;
+    description: string;
+    program: string;
+  }
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isTapped, setIsTapped] = useState(false);
+  const isRevealed = isHovered || isTapped;
+
+  return (
+    <motion.div
+      className="relative overflow-hidden cursor-pointer"
+      style={{ aspectRatio: "3/4" }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onTap={() => setIsTapped(v => !v)}
+    >
+      {/* Full-bleed image */}
+      <motion.div
+        className="absolute inset-0"
+        animate={{ scale: isRevealed ? 1.08 : 1 }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <img
+          src={item.image}
+          alt={item.title}
+          loading="lazy"
+          className="w-full h-full object-cover"
+        />
+      </motion.div>
+
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent pointer-events-none transition-opacity duration-500"
+           style={{ opacity: isRevealed ? 1 : 0.5 }} />
+
+      {/* Default label */}
+      <AnimatePresence>
+        {!isRevealed && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute bottom-6 left-6 right-6"
+          >
+            <p className="label text-white/40 text-[8px] tracking-[0.3em] uppercase mb-2">
+              {item.program}
+            </p>
+            <h3 className="font-display text-white text-xl md:text-2xl uppercase leading-tight">
+              {item.title}
+            </h3>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Revealed overlay content */}
+      <AnimatePresence>
+        {isRevealed && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"
+          >
+            <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+              {/* Title */}
+              <motion.h3
+                key="title"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0 }}
+                className="font-display text-white text-2xl md:text-3xl uppercase leading-tight mb-2"
+              >
+                {item.title}
+              </motion.h3>
+
+              {/* Description */}
+              <motion.p
+                key="desc"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
+                className="text-white/80 font-light text-sm leading-relaxed mb-6 max-w-sm line-clamp-2"
+              >
+                {item.description}
+              </motion.p>
+
+              {/* CTA */}
+              <motion.a
+                key="cta"
+                href="/work"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.24 }}
+                className="group/lookup inline-flex items-center gap-3 text-white/90 text-[11px] uppercase tracking-[0.25em] hover:text-gold transition-colors w-fit"
+              >
+                View Details
+                <motion.span
+                  animate={{ x: isHovered ? 4 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  →
+                </motion.span>
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
 
