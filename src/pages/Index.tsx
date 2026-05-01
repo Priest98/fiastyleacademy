@@ -1,7 +1,7 @@
 import PublicLayout from "@/components/layout/PublicLayout";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check, Star, Quote } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import FadeIn from "@/components/animations/FadeIn";
 import homeHero from "@/assets/new/homepage/home1.jpg";
 import cat1_1 from "@/assets/new/category1/cat1-1.jpg";
@@ -86,36 +86,86 @@ export default function Index() {
           </motion.div>
         </section>
 
-        {/* SOCIAL PROOF: Visual Excellence Masonry */}
-        <section className="section-padding-lg bg-white overflow-hidden">
-          <div className="editorial-container">
+        {/* TRANSFORMATION LOOKBOOK: Editorial Showcase */}
+        <section className="bg-black text-white">
+          {/* Section Header */}
+          <div className="editorial-container section-padding-lg">
             <FadeIn>
-              <div className="mb-20">
-                <span className="label text-gold mb-4 block">The Transformation</span>
-                <h2 className="text-balance">
+              <div className="max-w-4xl">
+                <span className="label text-gold mb-6 block tracking-[0.35em]">The Transformation</span>
+                <h1 className="text-4xl md:text-6xl uppercase leading-none tracking-tight">
                   Created by our <br />
-                  <span className="italic">Elite Graduates</span>
-                </h2>
+                  <span className="italic text-gold">Elite Graduates</span>
+                </h1>
               </div>
             </FadeIn>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="space-y-8">
-                <PortfolioItem image={cat1_5} title="Signature Couture" category="Advanced" />
-                <PortfolioItem image={cat4_2} title="Structural Detail" category="Pattern Making" />
-              </div>
-              <div className="space-y-8 pt-12 md:pt-24">
-                <PortfolioItem image={cat2_5} title="Bespoke Corsetry" category="Masterclass" />
-                <PortfolioItem image={cat3_1} title="Luxury Finishing" category="Tailoring" />
-              </div>
-              <div className="space-y-8">
-                <PortfolioItem image={cat4_1} title="Modern Silhouette" category="Ready-to-Wear" />
-                <PortfolioItem image={cat5_1} title="Fabric Manipulation" category="Artisan" />
-              </div>
-              <div className="space-y-8 pt-12 md:pt-16">
-                <PortfolioItem image={cat1_12} title="Bridal Excellence" category="Couture" />
-                <PortfolioItem image={cat3_2} title="Design Mastery" category="Portfolio" />
-              </div>
+          {/* Lookbook Grid */}
+          <div className="editorial-container -mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              {[
+                {
+                  image: cat1_5,
+                  title: "Signature Couture",
+                  student: "By Adebimbo A.",
+                  description: "Master-level construction with precision-cut panels and hand-applied embellishment.",
+                  program: "Advanced Class '25"
+                },
+                {
+                  image: cat4_2,
+                  title: "Structural Precision",
+                  student: "By Chiamaka E.",
+                  description: "Geometric mastery in tailored suiting — where every seam is a design decision.",
+                  program: "Intermediate Class '25"
+                },
+                {
+                  image: cat2_5,
+                  title: "Master Corsetry",
+                  student: "By Fatima O.",
+                  description: "Heritage boning techniques reimagined in a sculptural, modern silhouette.",
+                  program: "Corsetry Masterclass '25"
+                },
+                {
+                  image: cat3_1,
+                  title: "Luxury Finishing",
+                  student: "By Ngozi E.",
+                  description: "Intricate surface detailing that elevates tailoring into wearable art.",
+                  program: "Advanced Class '25"
+                },
+                {
+                  image: cat4_1,
+                  title: "Modern Silhouette",
+                  student: "By Adaora N.",
+                  description: "Clean, confident, and contemporary — designed for the global stage.",
+                  program: "Intermediate Class '25"
+                },
+                {
+                  image: cat5_1,
+                  title: "Fabric Mastery",
+                  student: "By Funke A.",
+                  description: "Advanced textile manipulation and surface manipulation techniques.",
+                  program: "Professional Class '25"
+                },
+                {
+                  image: cat1_12,
+                  title: "Bridal Excellence",
+                  student: "By Bolatito D.",
+                  description: "Structured grandeur with ethereal grace — bridal couture at its finest.",
+                  program: "Advanced Class '25"
+                },
+                {
+                  image: cat3_2,
+                  title: "Design Mastery",
+                  student: "By Ifeoma K.",
+                  description: "Concept-led exploration of form, identity, and craft in contemporary fashion.",
+                  program: "Portfolio Development '25"
+                },
+              ].map((item, i) => (
+                <FadeIn key={i} direction="up" delay={i * 0.06}>
+                  <LookbookItem item={item} />
+                </FadeIn>
+              ))}
             </div>
           </div>
         </section>
@@ -262,25 +312,6 @@ export default function Index() {
   );
 }
 
-function PortfolioItem({ image, title, category, isAlwaysGrayscale = false }: { image: string, title: string, category: string, isAlwaysGrayscale?: boolean }) {
-  return (
-    <FadeIn direction="up">
-      <div className="group cursor-pointer">
-        <div className="aspect-portrait overflow-hidden bg-neutral-100 mb-6 shadow-soft hover-lift">
-          <img 
-            src={image} 
-            alt={title} 
-            className={`w-full h-full object-cover transition-all duration-[1.5s] group-hover:scale-110 
-              ${isAlwaysGrayscale ? "grayscale" : "grayscale group-hover:grayscale-0"}`} 
-          />
-        </div>
-        <span className="label text-[9px] text-gold mb-2 block">{category}</span>
-        <h3 className="font-display text-xl uppercase tracking-tight group-hover:italic transition-all">{title}</h3>
-      </div>
-    </FadeIn>
-  );
-}
-
 function Pillar({ title, desc }: { title: string, desc: string }) {
   return (
     <div className="space-y-2">
@@ -319,6 +350,138 @@ function ProgramCard({ image, title, duration, level, outcome, price }: { image:
         </a>
       </div>
     </FadeIn>
+  );
+}
+
+// ── Lookbook Item (Transformation Showcase) ───────────────────────────────────
+function LookbookItem({ item }: { 
+  item: {
+    image: string;
+    title: string;
+    student: string;
+    description: string;
+    program: string;
+  }
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isTapped, setIsTapped] = useState(false);
+  const isRevealed = isHovered || isTapped;
+
+  return (
+    <motion.div
+      className="relative overflow-hidden cursor-pointer"
+      style={{ aspectRatio: "3/4" }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onTap={() => setIsTapped(v => !v)}
+    >
+      {/* Full-bleed image */}
+      <motion.div
+        className="absolute inset-0"
+        animate={{ scale: isRevealed ? 1.08 : 1 }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <img
+          src={item.image}
+          alt={item.title}
+          loading="lazy"
+          className="w-full h-full object-cover"
+        />
+      </motion.div>
+
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent pointer-events-none transition-opacity duration-500"
+           style={{ opacity: isRevealed ? 1 : 0.5 }} />
+
+      {/* Default label */}
+      <AnimatePresence>
+        {!isRevealed && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute bottom-6 left-6 right-6"
+          >
+            <p className="label text-white/40 text-[8px] tracking-[0.3em] uppercase mb-2">
+              {item.program}
+            </p>
+            <h3 className="font-display text-white text-xl md:text-2xl uppercase leading-tight">
+              {item.title}
+            </h3>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Revealed overlay content */}
+      <AnimatePresence>
+        {isRevealed && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"
+          >
+            <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+              {/* Title */}
+              <motion.h3
+                key="title"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0 }}
+                className="font-display text-white text-2xl md:text-3xl uppercase leading-tight mb-2"
+              >
+                {item.title}
+              </motion.h3>
+
+              {/* Student */}
+              <motion.p
+                key="student"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
+                className="text-white/60 text-sm uppercase tracking-widest mb-4"
+              >
+                {item.student}
+              </motion.p>
+
+              {/* Description */}
+              <motion.p
+                key="desc"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.16 }}
+                className="text-white/80 font-light text-sm leading-relaxed mb-6 max-w-sm line-clamp-2"
+              >
+                {item.description}
+              </motion.p>
+
+              {/* CTA */}
+              <motion.a
+                key="cta"
+                href="/work"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.24 }}
+                className="group/lookup inline-flex items-center gap-3 text-white/90 text-[11px] uppercase tracking-[0.25em] hover:text-gold transition-colors w-fit"
+              >
+                View Details
+                <motion.span
+                  animate={{ x: isHovered ? 4 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  →
+                </motion.span>
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
 
