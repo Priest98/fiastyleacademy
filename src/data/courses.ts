@@ -1,6 +1,6 @@
-import a1 from "@/assets/student-work/a1.jpeg";
-import a2 from "@/assets/student-work/a2.jpeg";
-import a3 from "@/assets/student-work/a3.jpeg";
+import cat1_1 from "@/assets/new/category1/cat1-1.jpg";
+import cat2_2 from "@/assets/new/category2/cat2-2.jpg";
+import cat3_1 from "@/assets/new/category3/cat3-1.jpg";
 import type { Course } from "@/components/marketing/CourseCard";
 
 export const courses: Course[] = [
@@ -11,7 +11,7 @@ export const courses: Course[] = [
     duration: "3 Months", 
     level: "Intermediate", 
     price: "₦85,000", 
-    image: a1, 
+    image: cat1_1, 
     seats: 20 
   },
   { 
@@ -21,7 +21,7 @@ export const courses: Course[] = [
     duration: "3 Months", 
     level: "Advanced", 
     price: "₦120,000", 
-    image: a2, 
+    image: cat2_2, 
     seats: 15 
   },
   { 
@@ -31,7 +31,7 @@ export const courses: Course[] = [
     duration: "1 Month", 
     level: "All levels", 
     price: "₦45,000", 
-    image: a3, 
+    image: cat3_1, 
     seats: 25 
   },
 ];

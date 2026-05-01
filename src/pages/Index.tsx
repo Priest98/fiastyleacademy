@@ -3,15 +3,16 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Check, Star, Quote } from "lucide-react";
 import { useRef } from "react";
 import FadeIn from "@/components/animations/FadeIn";
-import a1 from "@/assets/student-work/a1.jpeg";
-import a2 from "@/assets/student-work/a2.jpeg";
-import a3 from "@/assets/student-work/a3.jpeg";
-import w1 from "@/assets/student-work/IMG_4927.JPG.jpeg";
-import w2 from "@/assets/student-work/IMG_4928.JPG.jpeg";
-import w3 from "@/assets/student-work/IMG_4933.JPG.jpeg";
-import w4 from "@/assets/student-work/IMG_4934.JPG.jpeg";
-import w5 from "@/assets/student-work/IMG_4935.JPG.jpeg";
-import w6 from "@/assets/student-work/IMG_4936.JPG.jpeg";
+import homeHero from "@/assets/new/homepage/home1.jpg";
+import cat1_1 from "@/assets/new/category1/cat1-1.jpg";
+import cat1_2 from "@/assets/new/category1/cat1-2.jpg";
+import cat1_3 from "@/assets/new/category1/cat1-3.jpg";
+import cat2_1 from "@/assets/new/category2/cat2-1.jpg";
+import cat2_2 from "@/assets/new/category2/cat2-2.jpg";
+import cat3_1 from "@/assets/new/category3/cat3-1.jpg";
+import cat4_1 from "@/assets/new/category4/cat4-1.jpg";
+import cat5_1 from "@/assets/new/category5/cat5-1.jpg";
+import cat5_8 from "@/assets/new/category5/cat5-8.jpg";
 import fabricImage from "@/assets/fabric.png";
 
 export default function Index() {
@@ -34,7 +35,7 @@ export default function Index() {
             className="absolute inset-0 z-0"
           >
             <img 
-              src={a1} 
+              src={homeHero} 
               alt="Fiatstyle Editorial" 
               className="w-full h-full object-cover opacity-70 grayscale hover:grayscale-0 transition-all duration-[2000ms]" 
               loading="eager" 
@@ -95,20 +96,20 @@ export default function Index() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="space-y-8">
-                <PortfolioItem image={w1} title="Signature Couture" category="Advanced" />
-                <PortfolioItem image={w2} title="Structural Detail" category="Pattern Making" />
+                <PortfolioItem image={cat1_1} title="Signature Couture" category="Advanced" />
+                <PortfolioItem image={cat1_2} title="Structural Detail" category="Pattern Making" />
               </div>
               <div className="space-y-8 pt-12 md:pt-24">
-                <PortfolioItem image={a3} title="Bespoke Corsetry" category="Masterclass" />
-                <PortfolioItem image={w3} title="Luxury Finishing" category="Tailoring" />
+                <PortfolioItem image={cat2_1} title="Bespoke Corsetry" category="Masterclass" />
+                <PortfolioItem image={cat3_1} title="Luxury Finishing" category="Tailoring" />
               </div>
               <div className="space-y-8">
-                <PortfolioItem image={w4} title="Modern Silhouette" category="Ready-to-Wear" />
-                <PortfolioItem image={w5} title="Fabric Manipulation" category="Artisan" />
+                <PortfolioItem image={cat4_1} title="Modern Silhouette" category="Ready-to-Wear" />
+                <PortfolioItem image={cat5_1} title="Fabric Manipulation" category="Artisan" />
               </div>
               <div className="space-y-8 pt-12 md:pt-16">
-                <PortfolioItem image={w6} title="Bridal Excellence" category="Couture" />
-                <PortfolioItem image={a2} title="Design Mastery" category="Portfolio" />
+                <PortfolioItem image={cat1_3} title="Bridal Excellence" category="Couture" />
+                <PortfolioItem image={cat2_2} title="Design Mastery" category="Portfolio" />
               </div>
             </div>
           </div>
@@ -138,7 +139,7 @@ export default function Index() {
               </FadeIn>
               <FadeIn direction="left" delay={0.2}>
                 <div className="aspect-portrait relative overflow-hidden group">
-                  <img src={a2} alt="Workshop" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms]" />
+                  <img src={cat5_8} alt="Workshop" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms]" />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-all duration-500" />
                 </div>
               </FadeIn>
@@ -158,7 +159,7 @@ export default function Index() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-black/5 shadow-luxury">
               <ProgramCard 
-                image={w1}
+                image={cat1_1}
                 title="Intermediate"
                 duration="90 Days"
                 level="Level 01"
@@ -166,7 +167,7 @@ export default function Index() {
                 price="₦85,000"
               />
               <ProgramCard 
-                image={a3}
+                image={cat2_2}
                 title="Advanced Couture"
                 duration="90 Days"
                 level="Level 02"
@@ -174,7 +175,7 @@ export default function Index() {
                 price="₦120,000"
               />
               <ProgramCard 
-                image={a1}
+                image={cat3_1}
                 title="Corsetry Mastery"
                 duration="30 Days"
                 level="Specialist"

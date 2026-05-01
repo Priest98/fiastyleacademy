@@ -1,5 +1,5 @@
 import PublicLayout from "@/components/layout/PublicLayout";
-import galleryImage from "@/assets/gallery.png";
+import aboutImage from "@/assets/new/category1/cat1-5.jpg";
 import FadeIn from "@/components/animations/FadeIn";
 
 export default function About() {
@@ -22,7 +22,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <FadeIn direction="right">
             <div className="aspect-portrait overflow-hidden shadow-luxury">
-              <img src={galleryImage} alt="Fashion Detail" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" loading="lazy" />
+              <img src={aboutImage} alt="Fashion Detail" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" loading="lazy" />
             </div>
           </FadeIn>
           <div className="space-y-16">

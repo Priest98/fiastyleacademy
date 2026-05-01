@@ -1,27 +1,33 @@
 import PublicLayout from "@/components/layout/PublicLayout";
 import { motion } from "framer-motion";
-import a1 from "@/assets/student-work/a1.jpeg";
-import a2 from "@/assets/student-work/a2.jpeg";
-import a3 from "@/assets/student-work/a3.jpeg";
-import w1 from "@/assets/student-work/IMG_4927.JPG.jpeg";
-import w2 from "@/assets/student-work/IMG_4928.JPG.jpeg";
-import w3 from "@/assets/student-work/IMG_4933.JPG.jpeg";
-import w4 from "@/assets/student-work/IMG_4934.JPG.jpeg";
-import w5 from "@/assets/student-work/IMG_4935.JPG.jpeg";
-import w6 from "@/assets/student-work/IMG_4936.JPG.jpeg";
+import cat1_1 from "@/assets/new/category1/cat1-1.jpg";
+import cat1_2 from "@/assets/new/category1/cat1-2.jpg";
+import cat1_3 from "@/assets/new/category1/cat1-3.jpg";
+import cat1_4 from "@/assets/new/category1/cat1-4.jpg";
+import cat2_1 from "@/assets/new/category2/cat2-1.jpg";
+import cat2_2 from "@/assets/new/category2/cat2-2.jpg";
+import cat3_1 from "@/assets/new/category3/cat3-1.jpg";
+import cat3_2 from "@/assets/new/category3/cat3-2.jpg";
+import cat4_1 from "@/assets/new/category4/cat4-1.jpg";
+import cat5_1 from "@/assets/new/category5/cat5-1.jpg";
+import cat5_2 from "@/assets/new/category5/cat5-2.jpg";
+import cat5_3 from "@/assets/new/category5/cat5-3.jpg";
 
 import FadeIn from "@/components/animations/FadeIn";
 
 const gallery = [
-  { title: "Signature Couture", artist: "Fiatstyle Graduate", image: a1, category: "Advanced" },
-  { title: "Structural Precision", artist: "Fiatstyle Graduate", image: a2, category: "Pattern Making" },
-  { title: "Master Corsetry", artist: "Fiatstyle Graduate", image: a3, category: "Masterclass" },
-  { title: "Asoebi Mastery", artist: "Fiatstyle Graduate", image: w1, category: "Traditional" },
-  { title: "Design Detailing", artist: "Fiatstyle Graduate", image: w2, category: "Tailoring" },
-  { title: "Advanced Tailoring", artist: "Fiatstyle Graduate", image: w3, category: "Couture" },
-  { title: "The Modern Silhouette", artist: "Fiatstyle Graduate", image: w4, category: "Ready-to-Wear" },
-  { title: "Couture Craftsmanship", artist: "Fiatstyle Graduate", image: w5, category: "Artisan" },
-  { title: "Bridal Excellence", artist: "Fiatstyle Graduate", image: w6, category: "Bridal" },
+  { title: "Signature Couture", artist: "Fiatstyle Graduate", image: cat1_1, category: "Advanced" },
+  { title: "Structural Precision", artist: "Fiatstyle Graduate", image: cat1_2, category: "Pattern Making" },
+  { title: "Master Corsetry", artist: "Fiatstyle Graduate", image: cat2_1, category: "Masterclass" },
+  { title: "Traditional Elegance", artist: "Fiatstyle Graduate", image: cat1_3, category: "Traditional" },
+  { title: "Design Detailing", artist: "Fiatstyle Graduate", image: cat3_1, category: "Tailoring" },
+  { title: "Advanced Tailoring", artist: "Fiatstyle Graduate", image: cat5_1, category: "Couture" },
+  { title: "Modern Silhouette", artist: "Fiatstyle Graduate", image: cat4_1, category: "Ready-to-Wear" },
+  { title: "Artisan Craft", artist: "Fiatstyle Graduate", image: cat5_2, category: "Artisan" },
+  { title: "Bridal Excellence", artist: "Fiatstyle Graduate", image: cat1_4, category: "Bridal" },
+  { title: "Evening Glamour", artist: "Fiatstyle Graduate", image: cat2_2, category: "Couture" },
+  { title: "Conceptual Design", artist: "Fiatstyle Graduate", image: cat3_2, category: "Portfolio" },
+  { title: "Textile Mastery", artist: "Fiatstyle Graduate", image: cat5_3, category: "Fabric" },
 ];
 
 export default function Work() {
