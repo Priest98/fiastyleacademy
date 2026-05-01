@@ -86,78 +86,119 @@ export default function Index() {
           </motion.div>
         </section>
 
-        {/* TRANSFORMATION LOOKBOOK: Editorial Showcase */}
-        <section className="bg-black text-white">
-          {/* Section Header */}
-          <div className="editorial-container section-padding-lg">
+        {/* TRANSFORMATION LOOKBOOK: Cinematic Editorial */}
+        <section className="bg-black text-white relative overflow-hidden">
+          {/* Subtle grain texture for film-like quality */}
+          <div className="absolute inset-0 opacity-5 pointer-events-none" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+            backgroundSize: '150px',
+          }} />
+
+          {/* Hero Intro */}
+          <div className="editorial-container section-padding-lg relative z-10">
             <FadeIn>
               <div className="max-w-4xl">
-                <span className="label text-gold mb-6 block tracking-[0.35em]">The Transformation</span>
-                <h1 className="text-4xl md:text-6xl uppercase leading-none tracking-tight">
+                <span className="label text-gold mb-8 block tracking-[0.35em] uppercase">The Transformation</span>
+                <h1 className="text-5xl md:text-7xl lg:text-8xl uppercase leading-none tracking-tighter">
                   Created by our <br />
-                  <span className="italic text-gold">Elite Graduates</span>
+                  <span className="italic text-gold/80">Elite Graduates</span>
                 </h1>
               </div>
             </FadeIn>
           </div>
 
-          {/* Lookbook Grid */}
-          <div className="editorial-container -mt-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-              {[
-                {
-                  image: cat1_5,
-                  title: "Signature Couture",
-                  description: "Master-level construction with precision-cut panels and hand-applied embellishment.",
-                  program: "Advanced Class '25"
-                },
-                {
-                  image: cat4_2,
-                  title: "Structural Precision",
-                  description: "Geometric mastery in tailored suiting — where every seam is a design decision.",
-                  program: "Intermediate Class '25"
-                },
-                {
-                  image: cat2_5,
-                  title: "Master Corsetry",
-                  description: "Heritage boning techniques reimagined in a sculptural, modern silhouette.",
-                  program: "Corsetry Masterclass '25"
-                },
-                {
-                  image: cat3_1,
-                  title: "Luxury Finishing",
-                  description: "Intricate surface detailing that elevates tailoring into wearable art.",
-                  program: "Advanced Class '25"
-                },
-                {
-                  image: cat4_1,
-                  title: "Modern Silhouette",
-                  description: "Clean, confident, and contemporary — designed for the global stage.",
-                  program: "Intermediate Class '25"
-                },
-                {
-                  image: cat5_1,
-                  title: "Fabric Mastery",
-                  description: "Advanced textile manipulation and surface manipulation techniques.",
-                  program: "Professional Class '25"
-                },
-                {
-                  image: cat1_12,
-                  title: "Bridal Excellence",
-                  description: "Structured grandeur with ethereal grace — bridal couture at its finest.",
-                  program: "Advanced Class '25"
-                },
-                {
-                  image: cat3_2,
-                  title: "Design Mastery",
-                  description: "Concept-led exploration of form, identity, and craft in contemporary fashion.",
-                  program: "Portfolio Development '25"
-                },
-              ].map((item, i) => (
-                <FadeIn key={i} direction="up" delay={i * 0.06}>
-                  <LookbookItem item={item} />
+          {/* Cinematic Asymmetrical Grid */}
+          <div className="editorial-container relative z-10 pb-24 md:pb-32">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 auto-rows-auto">
+              {/* Large featured piece - spans 8 cols on desktop */}
+              <FadeIn direction="up" delay={0}>
+                <div className="md:col-span-8 md:row-span-2 aspect-[4/5] md:aspect-auto">
+                  <LookbookCard
+                    image={cat1_5}
+                    title="Signature Couture"
+                    description="Master-level construction with precision-cut panels and hand-applied embellishment."
+                    program="Advanced Class '25"
+                    size="large"
+                  />
+                </div>
+              </FadeIn>
+
+              {/* Vertical stack right - 4 cols */}
+              <div className="md:col-span-4 space-y-4 md:gap-6">
+                <FadeIn direction="up" delay={0.1}>
+                  <div className="aspect-[3/4]">
+                    <LookbookCard
+                      image={cat4_2}
+                      title="Structural Precision"
+                      description="Geometric mastery in tailored suiting."
+                      program="Intermediate"
+                      size="small"
+                    />
+                  </div>
                 </FadeIn>
-              ))}
+                <FadeIn direction="up" delay={0.16}>
+                  <div className="aspect-[3/4]">
+                    <LookbookCard
+                      image={cat2_5}
+                      title="Master Corsetry"
+                      description="Heritage boning techniques in modern silhouette."
+                      program="Masterclass"
+                      size="small"
+                    />
+                  </div>
+                </FadeIn>
+              </div>
+
+              {/* Second row - left column 4 cols */}
+              <FadeIn direction="up" delay={0.22}>
+                <div className="md:col-span-4 aspect-[3/4]">
+                  <LookbookCard
+                    image={cat3_1}
+                    title="Luxury Finishing"
+                    description="Intricate detailing that elevates tailoring into wearable art."
+                    program="Advanced Class"
+                    size="small"
+                  />
+                </div>
+              </FadeIn>
+
+              {/* Second row - right column 8 cols (full width under feature) */}
+              <FadeIn direction="up" delay={0.28}>
+                <div className="md:col-span-8 aspect-[16/9] md:aspect-[21/9]">
+                  <LookbookCard
+                    image={cat5_1}
+                    title="Fabric Mastery"
+                    description="Advanced textile manipulation and surface craftsmanship."
+                    program="Professional Class"
+                    size="wide"
+                  />
+                </div>
+              </FadeIn>
+
+              {/* Bottom row - alternating sizes */}
+              <FadeIn direction="up" delay={0.34}>
+                <div className="md:col-span-5 aspect-[3/4]">
+                  <LookbookCard
+                    image={cat1_12}
+                    title="Bridal Excellence"
+                    description="Structured grandeur with ethereal grace."
+                    program="Advanced Class"
+                    size="medium"
+                  />
+                </div>
+              </FadeIn>
+
+              <FadeIn direction="up" delay={0.4}>
+                <div className="md:col-span-7 aspect-[3/4]">
+                  <LookbookCard
+                    image={cat3_2}
+                    title="Design Mastery"
+                    description="Concept-led exploration of form, identity, and contemporary craft."
+                    program="Portfolio Development"
+                    size="large"
+                  />
+                </div>
+              </FadeIn>
             </div>
           </div>
         </section>
@@ -345,113 +386,157 @@ function ProgramCard({ image, title, duration, level, outcome, price }: { image:
   );
 }
 
-// ── Lookbook Item (Transformation Showcase) ───────────────────────────────────
-function LookbookItem({ item }: { 
-  item: {
-    image: string;
-    title: string;
-    description: string;
-    program: string;
-  }
+// ── Lookbook Card (Cinematic Transformation Card) ─────────────────────────────
+function LookbookCard({ 
+  image, 
+  title, 
+  description, 
+  program, 
+  size = "medium"
+}: { 
+  image: string;
+  title: string;
+  description: string;
+  program: string;
+  size?: "small" | "medium" | "large" | "wide";
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isTapped, setIsTapped] = useState(false);
   const isRevealed = isHovered || isTapped;
 
+  // Card variations based on size
+  const sizeClasses = {
+    small: "p-6 md:p-8",
+    medium: "p-8 md:p-10",
+    large: "p-10 md:p-12",
+    wide: "p-8 md:p-10"
+  };
+
+  // Title size variations
+  const titleClasses = {
+    small: "text-2xl md:text-3xl",
+    medium: "text-2xl md:text-3xl",
+    large: "text-3xl md:text-4xl",
+    wide: "text-3xl md:text-4xl"
+  };
+
   return (
     <motion.div
-      className="relative overflow-hidden cursor-pointer"
+      className="relative overflow-hidden cursor-pointer group"
       style={{ aspectRatio: "3/4" }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onTap={() => setIsTapped(v => !v)}
     >
-      {/* Full-bleed image */}
+      {/* Full-bleed image with slow zoom on hover */}
       <motion.div
         className="absolute inset-0"
-        animate={{ scale: isRevealed ? 1.08 : 1 }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        animate={{ 
+          scale: isRevealed ? 1.08 : 1,
+        }}
+        transition={{ 
+          duration: 1.2, 
+          ease: [0.22, 1, 0.36, 1] 
+        }}
       >
         <img
-          src={item.image}
-          alt={item.title}
+          src={image}
+          alt={title}
           loading="lazy"
           className="w-full h-full object-cover"
         />
       </motion.div>
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent pointer-events-none transition-opacity duration-500"
-           style={{ opacity: isRevealed ? 1 : 0.5 }} />
+      {/* Subtle gradient overlay that deepens on hover */}
+      <div 
+        className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent pointer-events-none transition-opacity duration-700 ease-[0.22,1,0.36,1]"
+        style={{ opacity: isRevealed ? 1 : 0.6 }}
+      />
 
-      {/* Default label */}
+      {/* Program label (subtle, always visible but dims on hover) */}
+      <div 
+        className="absolute top-6 left-6 transition-opacity duration-500"
+        style={{ opacity: isRevealed ? 0.3 : 0.5 }}
+      >
+        <p className="label text-white text-[8px] tracking-[0.4em] uppercase">
+          {program}
+        </p>
+      </div>
+
+      {/* Default state: only title visible, elegant and mysterious */}
       <AnimatePresence>
         {!isRevealed && (
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="absolute bottom-6 left-6 right-6"
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute bottom-8 left-6 right-6"
           >
-            <p className="label text-white/40 text-[8px] tracking-[0.3em] uppercase mb-2">
-              {item.program}
-            </p>
-            <h3 className="font-display text-white text-xl md:text-2xl uppercase leading-tight">
-              {item.title}
-            </h3>
+            <h2 className={`font-display text-white uppercase leading-tight ${titleClasses[size]}`}>
+              {title}
+            </h2>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Revealed overlay content */}
+      {/* Hover Reveal: Cinematic overlay with staggered content */}
       <AnimatePresence>
         {isRevealed && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent"
           >
-            <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
-              {/* Title */}
-              <motion.h3
+            <div className={`absolute inset-0 flex flex-col justify-end ${sizeClasses[size]}`}>
+              {/* Title - appears first */}
+              <motion.h2
                 key="title"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0 }}
-                className="font-display text-white text-2xl md:text-3xl uppercase leading-tight mb-2"
+                exit={{ opacity: 0, y: 18 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0 }}
+                className={`font-display text-white uppercase leading-tight mb-3 ${titleClasses[size]}`}
               >
-                {item.title}
-              </motion.h3>
+                {title}
+              </motion.h2>
 
-              {/* Description */}
+              {/* Description - appears second */}
               <motion.p
                 key="desc"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
-                className="text-white/80 font-light text-sm leading-relaxed mb-6 max-w-sm line-clamp-2"
+                exit={{ opacity: 0, y: 18 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
+                className="text-white/80 font-light text-sm md:text-base leading-relaxed mb-6 max-w-sm line-clamp-2"
               >
-                {item.description}
+                {description}
               </motion.p>
 
-              {/* CTA */}
+              {/* Transformational CTA - appears last */}
               <motion.a
                 key="cta"
                 href="/work"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.24 }}
-                className="group/lookup inline-flex items-center gap-3 text-white/90 text-[11px] uppercase tracking-[0.25em] hover:text-gold transition-colors w-fit"
+                exit={{ opacity: 0, y: 18 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.24 }}
+                className="group/cta inline-flex items-center gap-3 text-white/90 text-[11px] md:text-[12px] uppercase tracking-[0.25em] hover:text-gold transition-colors duration-500"
               >
-                View Details
+                <span className="relative">
+                  View Transformation
+                  <motion.span
+                    className="absolute -bottom-1 left-0 h-px bg-current"
+                    initial={{ width: 0 }}
+                    animate={{ width: isHovered ? "100%"" : 0 }}
+                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  />
+                </span>
                 <motion.span
-                  animate={{ x: isHovered ? 4 : 0 }}
-                  transition={{ duration: 0.3 }}
+                  animate={{ x: isHovered ? 5 : 0 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="text-lg"
                 >
                   →
                 </motion.span>
@@ -464,7 +549,7 @@ function LookbookItem({ item }: {
   );
 }
 
-function TestimonialCard({ quote, author, location }: { quote: string, author: string, location: string }) {
+function Pillar({ title, desc }: { title: string, desc: string }) {
   return (
     <FadeIn direction="up">
       <div className="p-8 border border-black/5 hover:border-gold/30 transition-all duration-500 group h-full flex flex-col justify-between">
