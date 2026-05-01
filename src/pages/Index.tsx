@@ -1,7 +1,7 @@
 import PublicLayout from "@/components/layout/PublicLayout";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check, Star, Quote } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import FadeIn from "@/components/animations/FadeIn";
 import homeHero from "@/assets/new/homepage/home1.jpg";
 import cat1_1 from "@/assets/new/category1/cat1-1.jpg";
@@ -101,20 +101,60 @@ export default function Index() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="space-y-8">
-                <PortfolioItem image={cat1_5} title="Signature Couture" category="Advanced" />
-                <PortfolioItem image={cat4_2} title="Structural Detail" category="Pattern Making" />
+                <LookbookItem 
+                  image={cat1_5} 
+                  title="Signature Couture" 
+                  category="Advanced" 
+                  description="A masterclass in bespoke draping and technical precision."
+                />
+                <LookbookItem 
+                  image={cat4_2} 
+                  title="Structural Detail" 
+                  category="Pattern Making" 
+                  description="Exploring geometric silhouettes through advanced manipulation."
+                />
               </div>
               <div className="space-y-8 pt-12 md:pt-24">
-                <PortfolioItem image={cat2_5} title="Bespoke Corsetry" category="Masterclass" />
-                <PortfolioItem image={cat3_1} title="Luxury Finishing" category="Tailoring" />
+                <LookbookItem 
+                  image={cat2_5} 
+                  title="Bespoke Corsetry" 
+                  category="Masterclass" 
+                  description="Precision boning and heritage construction techniques."
+                />
+                <LookbookItem 
+                  image={cat3_1} 
+                  title="Luxury Finishing" 
+                  category="Tailoring" 
+                  description="The art of the invisible seam and high-end detailing."
+                />
               </div>
               <div className="space-y-8">
-                <PortfolioItem image={cat4_1} title="Modern Silhouette" category="Ready-to-Wear" />
-                <PortfolioItem image={cat5_1} title="Fabric Manipulation" category="Artisan" />
+                <LookbookItem 
+                  image={cat4_1} 
+                  title="Modern Silhouette" 
+                  category="Ready-to-Wear" 
+                  description="Minimalist aesthetics meets functional fashion design."
+                />
+                <LookbookItem 
+                  image={cat5_1} 
+                  title="Fabric Manipulation" 
+                  category="Artisan" 
+                  description="Transforming textiles into sculptural works of art."
+                />
               </div>
               <div className="space-y-8 pt-12 md:pt-16">
-                <PortfolioItem image={cat1_12} title="Bridal Excellence" category="Couture" />
-                <PortfolioItem image={cat3_2} title="Design Mastery" category="Portfolio" />
+                <LookbookItem 
+                  image={cat1_12} 
+                  title="Bridal Excellence" 
+                  category="Couture" 
+                  description="Grandeur and grace in every hand-stitched layer."
+                />
+                <LookbookItem 
+                  image={cat3_2} 
+                  title="Design Mastery" 
+                  category="Portfolio" 
+                  description="A comprehensive showcase of industry-ready creative vision."
+                />
               </div>
             </div>
           </div>
@@ -259,6 +299,83 @@ export default function Index() {
         </section>
       </div>
     </PublicLayout>
+  );
+}
+
+function LookbookItem({ image, title, category, description }: { image: string, title: string, category: string, description: string }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const easing = [0.22, 1, 0.36, 1];
+
+  return (
+    <FadeIn direction="up">
+      <div 
+        className="group relative cursor-pointer overflow-hidden bg-neutral-100 shadow-soft"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onTap={() => setIsHovered(!isHovered)}
+      >
+        <div className="aspect-portrait">
+          <motion.img 
+            src={image} 
+            alt={title} 
+            animate={{ scale: isHovered ? 1.08 : 1 }}
+            transition={{ duration: 0.8, ease: easing }}
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[1.5s]" 
+          />
+        </div>
+
+        <AnimatePresence>
+          {isHovered && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+              className="absolute inset-0 bg-black/60 flex flex-col justify-end p-8 text-white"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.5, ease: easing }}
+              >
+                <span className="label text-gold text-[9px] mb-3 block tracking-[0.3em]">{category}</span>
+                <h3 className="font-display text-2xl uppercase tracking-tight mb-4 leading-tight">
+                  {title}
+                </h3>
+              </motion.div>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.5, ease: easing }}
+                className="text-white/70 text-sm font-light leading-relaxed mb-6 max-w-xs"
+              >
+                {description}
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.5, ease: easing }}
+              >
+                <button className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] font-bold group/btn">
+                  View Details <ArrowRight className="h-3 w-3 transition-transform group-hover/btn:translate-x-2" />
+                </button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {!isHovered && (
+          <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end transition-opacity duration-300 group-hover:opacity-0">
+            <div>
+              <span className="label text-[8px] text-gold/80 mb-1 block tracking-[0.2em]">{category}</span>
+              <h3 className="text-[10px] uppercase tracking-[0.4em] text-black/40 font-bold">{title}</h3>
+            </div>
+          </div>
+        )}
+      </div>
+    </FadeIn>
   );
 }
 
