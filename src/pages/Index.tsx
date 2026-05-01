@@ -108,56 +108,48 @@ export default function Index() {
                 {
                   image: cat1_5,
                   title: "Signature Couture",
-                  student: "By Adebimbo A.",
                   description: "Master-level construction with precision-cut panels and hand-applied embellishment.",
                   program: "Advanced Class '25"
                 },
                 {
                   image: cat4_2,
                   title: "Structural Precision",
-                  student: "By Chiamaka E.",
                   description: "Geometric mastery in tailored suiting — where every seam is a design decision.",
                   program: "Intermediate Class '25"
                 },
                 {
                   image: cat2_5,
                   title: "Master Corsetry",
-                  student: "By Fatima O.",
                   description: "Heritage boning techniques reimagined in a sculptural, modern silhouette.",
                   program: "Corsetry Masterclass '25"
                 },
                 {
                   image: cat3_1,
                   title: "Luxury Finishing",
-                  student: "By Ngozi E.",
                   description: "Intricate surface detailing that elevates tailoring into wearable art.",
                   program: "Advanced Class '25"
                 },
                 {
                   image: cat4_1,
                   title: "Modern Silhouette",
-                  student: "By Adaora N.",
                   description: "Clean, confident, and contemporary — designed for the global stage.",
                   program: "Intermediate Class '25"
                 },
                 {
                   image: cat5_1,
                   title: "Fabric Mastery",
-                  student: "By Funke A.",
                   description: "Advanced textile manipulation and surface manipulation techniques.",
                   program: "Professional Class '25"
                 },
                 {
                   image: cat1_12,
                   title: "Bridal Excellence",
-                  student: "By Bolatito D.",
                   description: "Structured grandeur with ethereal grace — bridal couture at its finest.",
                   program: "Advanced Class '25"
                 },
                 {
                   image: cat3_2,
                   title: "Design Mastery",
-                  student: "By Ifeoma K.",
                   description: "Concept-led exploration of form, identity, and craft in contemporary fashion.",
                   program: "Portfolio Development '25"
                 },
@@ -358,7 +350,6 @@ function LookbookItem({ item }: {
   item: {
     image: string;
     title: string;
-    student: string;
     description: string;
     program: string;
   }
@@ -435,25 +426,13 @@ function LookbookItem({ item }: {
                 {item.title}
               </motion.h3>
 
-              {/* Student */}
-              <motion.p
-                key="student"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
-                className="text-white/60 text-sm uppercase tracking-widest mb-4"
-              >
-                {item.student}
-              </motion.p>
-
               {/* Description */}
               <motion.p
                 key="desc"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.16 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
                 className="text-white/80 font-light text-sm leading-relaxed mb-6 max-w-sm line-clamp-2"
               >
                 {item.description}
