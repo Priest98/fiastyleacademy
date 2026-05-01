@@ -6,11 +6,16 @@ import FadeIn from "@/components/animations/FadeIn";
 import homeHero from "@/assets/new/homepage/home1.jpg";
 import cat1_1 from "@/assets/new/category1/cat1-1.jpg";
 import cat1_2 from "@/assets/new/category1/cat1-2.jpg";
+import cat1_12 from "@/assets/new/category1/cat1-12.jpg";
 import cat1_3 from "@/assets/new/category1/cat1-3.jpg";
+import cat1_5 from "@/assets/new/category1/cat1-5.jpg";
 import cat2_1 from "@/assets/new/category2/cat2-1.jpg";
 import cat2_2 from "@/assets/new/category2/cat2-2.jpg";
+import cat2_5 from "@/assets/new/category2/cat2-5.jpg";
 import cat3_1 from "@/assets/new/category3/cat3-1.jpg";
+import cat3_2 from "@/assets/new/category3/cat3-2.jpg";
 import cat4_1 from "@/assets/new/category4/cat4-1.jpg";
+import cat4_2 from "@/assets/new/category4/cat4-2.jpg";
 import cat5_1 from "@/assets/new/category5/cat5-1.jpg";
 import cat5_8 from "@/assets/new/category5/cat5-8.jpg";
 import fabricImage from "@/assets/fabric.png";
@@ -96,11 +101,11 @@ export default function Index() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="space-y-8">
-                <PortfolioItem image={cat1_1} title="Signature Couture" category="Advanced" />
-                <PortfolioItem image={cat1_2} title="Structural Detail" category="Pattern Making" />
+                <PortfolioItem image={cat1_5} title="Signature Couture" category="Advanced" />
+                <PortfolioItem image={cat4_2} title="Structural Detail" category="Pattern Making" />
               </div>
               <div className="space-y-8 pt-12 md:pt-24">
-                <PortfolioItem image={cat2_1} title="Bespoke Corsetry" category="Masterclass" />
+                <PortfolioItem image={cat2_5} title="Bespoke Corsetry" category="Masterclass" />
                 <PortfolioItem image={cat3_1} title="Luxury Finishing" category="Tailoring" />
               </div>
               <div className="space-y-8">
@@ -108,8 +113,8 @@ export default function Index() {
                 <PortfolioItem image={cat5_1} title="Fabric Manipulation" category="Artisan" />
               </div>
               <div className="space-y-8 pt-12 md:pt-16">
-                <PortfolioItem image={cat1_3} title="Bridal Excellence" category="Couture" />
-                <PortfolioItem image={cat2_2} title="Design Mastery" category="Portfolio" />
+                <PortfolioItem image={cat1_12} title="Bridal Excellence" category="Couture" />
+                <PortfolioItem image={cat3_2} title="Design Mastery" category="Portfolio" />
               </div>
             </div>
           </div>
@@ -257,7 +262,7 @@ export default function Index() {
   );
 }
 
-function PortfolioItem({ image, title, category }: { image: string, title: string, category: string }) {
+function PortfolioItem({ image, title, category, isAlwaysGrayscale = false }: { image: string, title: string, category: string, isAlwaysGrayscale?: boolean }) {
   return (
     <FadeIn direction="up">
       <div className="group cursor-pointer">
@@ -265,7 +270,8 @@ function PortfolioItem({ image, title, category }: { image: string, title: strin
           <img 
             src={image} 
             alt={title} 
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[1.5s] group-hover:scale-110" 
+            className={`w-full h-full object-cover transition-all duration-[1.5s] group-hover:scale-110 
+              ${isAlwaysGrayscale ? "grayscale" : "grayscale group-hover:grayscale-0"}`} 
           />
         </div>
         <span className="label text-[9px] text-gold mb-2 block">{category}</span>
