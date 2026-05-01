@@ -4,31 +4,31 @@ import { motion } from "framer-motion";
 export default function Contact() {
   return (
     <PublicLayout>
-      <section className="container pt-24 md:pt-40 pb-24 md:pb-32">
-        <div className="grid lg:grid-cols-12 gap-16 md:gap-24 items-start">
+      <section className="editorial-container section-padding-lg">
+        <div className="grid lg:grid-cols-12 gap-24 items-start">
           <div className="lg:col-span-5">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             >
-              <span className="text-[10px] uppercase tracking-[0.5em] text-muted-foreground mb-6 block">Contact Us</span>
-              <h1 className="font-display text-4xl md:text-7xl uppercase tracking-tighter mb-8 md:mb-12">
+              <span className="label text-gold mb-6 block">Contact Us</span>
+              <h1 className="text-balance mb-12">
                 Begin Your <br />
-                <span className="italic">Application</span>
+                <span className="italic text-gold">Application</span>
               </h1>
-              <div className="space-y-8 md:space-y-10">
+              <div className="space-y-10">
                 <div>
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-2">General Inquiries</p>
-                  <p className="font-display text-xl md:text-2xl uppercase">studio@fiastyle.academy</p>
+                  <p className="label text-muted-foreground mb-2">General Inquiries</p>
+                  <p className="font-display text-2xl uppercase">studio@fiatstyle.academy</p>
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-2">WhatsApp / Phone</p>
-                  <p className="font-display text-xl md:text-2xl uppercase">+234 813 204 9363</p>
+                  <p className="label text-muted-foreground mb-2">WhatsApp / Phone</p>
+                  <p className="font-display text-2xl uppercase">+234 813 204 9363</p>
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-2">Location</p>
-                  <p className="font-display text-xl md:text-2xl uppercase">Ilorin, Nigeria</p>
+                  <p className="label text-muted-foreground mb-2">Location</p>
+                  <p className="font-display text-2xl uppercase">Ilorin, Nigeria</p>
                 </div>
               </div>
             </motion.div>
@@ -47,7 +47,7 @@ export default function Contact() {
               </div>
               <Field label="Program of Interest" placeholder="e.g. Intermediate Class" />
               <div>
-                <label className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground block mb-4">Your Vision</label>
+                <label className="label text-muted-foreground block mb-4">Your Vision</label>
                 <textarea 
                   rows={3} 
                   placeholder="Tell us about your background and design goals..."
@@ -68,7 +68,7 @@ export default function Contact() {
 function Field({ label, type = "text", placeholder }: { label: string; type?: string; placeholder?: string }) {
   return (
     <div className="w-full">
-      <label className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground block mb-4">{label}</label>
+      <label className="label text-muted-foreground block mb-4">{label}</label>
       <input 
         type={type} 
         placeholder={placeholder}

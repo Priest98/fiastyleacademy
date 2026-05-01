@@ -1,6 +1,6 @@
 import PublicLayout from "@/components/layout/PublicLayout";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Star, Quote } from "lucide-react";
 import { useRef } from "react";
 import FadeIn from "@/components/animations/FadeIn";
 import a1 from "@/assets/student-work/a1.jpeg";
@@ -9,329 +9,327 @@ import a3 from "@/assets/student-work/a3.jpeg";
 import w1 from "@/assets/student-work/IMG_4927.JPG.jpeg";
 import w2 from "@/assets/student-work/IMG_4928.JPG.jpeg";
 import w3 from "@/assets/student-work/IMG_4933.JPG.jpeg";
+import w4 from "@/assets/student-work/IMG_4934.JPG.jpeg";
+import w5 from "@/assets/student-work/IMG_4935.JPG.jpeg";
+import w6 from "@/assets/student-work/IMG_4936.JPG.jpeg";
 import fabricImage from "@/assets/fabric.png";
-import { Quote, Star } from "lucide-react";
 
 export default function Index() {
-  const targetRef = useRef(null);
+  const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
-    target: targetRef,
+    target: containerRef,
     offset: ["start start", "end start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1]);
-  const textY = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
-
-  const curriculum = [
-    "Body Measurements",
-    "Introduction to Pattern Making",
-    "Sewing Techniques",
-    "Corsetry (All Types)",
-    "Ready-to-Wear Fashion Design",
-    "Asoebi Styling",
-    "Hip Padding Techniques",
-    "Waist Snatching Techniques",
-    "Advanced tailoring methods"
-  ];
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 1.05]);
 
   return (
     <PublicLayout>
-      {/* Hero Section */}
-      <section ref={targetRef} className="relative h-screen flex items-center justify-center overflow-hidden texture-fabric">
-        <motion.div style={{ scale, opacity }} className="absolute inset-0 z-0">
-          <img src={a1} alt="Couture Detail" className="w-full h-full object-cover opacity-60" loading="lazy" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white" />
-        </motion.div>
-
-        <div className="container relative z-10 text-left pt-32 md:pt-40">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            style={{ y: textY }}
-            className="max-w-4xl"
+      <div ref={containerRef} className="relative">
+        {/* HERO SECTION: Immersive & Bold */}
+        <section className="relative h-screen flex items-center overflow-hidden bg-black">
+          <motion.div 
+            style={{ opacity: heroOpacity, scale: heroScale }}
+            className="absolute inset-0 z-0"
           >
-            <span className="label text-muted-foreground mb-8 block">2026 Intake · Online Academy · Ilorin</span>
-            <h1 className="mb-12">
-              Become a Professional <br className="hidden sm:block" />
-              <span className="italic">Fashion Designer in 90 Days</span>
-            </h1>
-            <p className="text-lg md:text-xl font-light mb-12 text-muted-foreground max-w-2xl">
-              Premium online fashion training for the next generation of couture designers. Join our 2026 intake and transform your creative vision into a professional career.
-            </p>
-            <div className="flex flex-col sm:flex-row items-start justify-start gap-6">
-              <a href="/enroll" className="btn-luxury-primary px-12 py-6">
-                Apply for 2026 Cohort
-              </a>
-              <a href="/courses" className="btn-luxury-secondary px-12 py-6">
-                Explore Programs
-              </a>
-            </div>
-            <p className="mt-8 label text-gold animate-pulse">
-              Limited seats remaining for May intake
-            </p>
+            <img 
+              src={a1} 
+              alt="Fiatstyle Editorial" 
+              className="w-full h-full object-cover opacity-70 grayscale hover:grayscale-0 transition-all duration-[2000ms]" 
+              loading="eager" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
           </motion.div>
-        </div>
-      </section>
 
-      {/* Social Proof / Stats Section */}
-      <section className="py-20 border-y border-black/5 bg-neutral-50/50">
-        <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-            {[
-              { label: "Students Trained", value: "1,000+" },
-              { label: "Success Rate", value: "95%" },
-              { label: "Course Modules", value: "24+" },
-              { label: "Global Reach", value: "12+ Countries" }
-            ].map((stat, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <div className="space-y-2">
-                  <p className="font-display text-3xl md:text-5xl uppercase tracking-tighter text-gold">{stat.value}</p>
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-medium">{stat.label}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Brand Introduction Section */}
-      <section className="py-40 bg-white">
-        <div className="container">
-          <div className="grid lg:grid-cols-2 gap-24 items-center">
-            <FadeIn direction="right">
-              <div className="aspect-[4/5] overflow-hidden">
-                <img src={a2} alt="Fiastyle Academy" className="w-full h-full object-cover hover:scale-105 transition-all duration-1000" loading="lazy" />
-              </div>
-            </FadeIn>
-            <FadeIn direction="left" delay={0.2}>
-              <div className="space-y-10 lg:pl-12">
-                <span className="label text-gold">The Delivery</span>
-                <h2 className="leading-tight">
-                  Global Learning <br />
-                  <span className="italic">Local Mastery</span>
-                </h2>
-                <p className="text-xl text-muted-foreground font-light">
-                  All classes are conducted online via WhatsApp and Telegram, allowing flexible learning access from anywhere. We provide structured professional fashion training and skill development directly to your device.
-                </p>
-                <div className="pt-8 grid grid-cols-1 sm:grid-cols-2 gap-y-8 sm:gap-y-6">
-                  <div>
-                    <p className="label text-gold mb-2">Registration Start</p>
-                    <h3 className="uppercase">April 5</h3>
-                  </div>
-                  <div>
-                    <p className="label text-gold mb-2">Class Commences</p>
-                    <h3 className="uppercase">May 4</h3>
-                  </div>
-                </div>
-                <a href="/about" className="group inline-flex items-center gap-4 label border-b border-gold pb-2 hover:text-gold transition-colors">
-                  Our Heritage — Meet the House <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-2" />
+          <div className="editorial-container relative z-10 w-full">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-4xl"
+            >
+              <span className="label text-gold mb-6 block fade-up" style={{ animationDelay: '0.2s' }}>
+                Fiatstyle Fashion Academy · 2026 Intake
+              </span>
+              <h1 className="text-white text-balance mb-10 fade-up" style={{ animationDelay: '0.4s' }}>
+                Master the Art of <br />
+                <span className="italic text-gold">High-End Couture</span>
+              </h1>
+              <p className="text-white/70 text-lg md:text-xl font-light mb-12 max-w-xl fade-up" style={{ animationDelay: '0.6s' }}>
+                The definitive online academy for the next generation of global fashion designers. Transform your creative vision into a professional career in 90 days.
+              </p>
+              <div className="flex flex-col sm:flex-row items-start gap-6 fade-up" style={{ animationDelay: '0.8s' }}>
+                <a href="/enroll" className="btn-luxury-primary px-16 py-6 group">
+                  Apply Now <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" />
+                </a>
+                <a href="/courses" className="btn-luxury-secondary text-white border-white/20 hover:border-white px-16 py-6">
+                  Explore Programs
                 </a>
               </div>
+            </motion.div>
+          </div>
+
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 1 }}
+            className="absolute bottom-12 left-1/2 -translate-x-1/2 hidden md:block"
+          >
+            <div className="w-px h-20 bg-gradient-to-b from-gold to-transparent animate-pulse" />
+          </motion.div>
+        </section>
+
+        {/* SOCIAL PROOF: Visual Excellence Masonry */}
+        <section className="section-padding-lg bg-white overflow-hidden">
+          <div className="editorial-container">
+            <FadeIn>
+              <div className="mb-20">
+                <span className="label text-gold mb-4 block">The Transformation</span>
+                <h2 className="text-balance">
+                  Created by our <br />
+                  <span className="italic">Elite Graduates</span>
+                </h2>
+              </div>
             </FadeIn>
-          </div>
-        </div>
-      </section>
 
-      {/* Curriculum Grid Section */}
-      <section className="relative section-spacing overflow-hidden texture-grain bg-black text-white">
-        <div className="absolute inset-0 z-0 opacity-20">
-          <img src={fabricImage} alt="Fabric Texture" className="w-full h-full object-cover" loading="lazy" />
-        </div>
-        <div className="container relative z-10">
-          <FadeIn>
-            <div className="text-left mb-16 md:mb-24">
-              <span className="label text-gold mb-8 block">The Curriculum</span>
-              <h2 className="italic md:not-italic md:uppercase">Structured <span className="md:italic">Excellence</span></h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="space-y-8">
+                <PortfolioItem image={w1} title="Signature Couture" category="Advanced" />
+                <PortfolioItem image={w2} title="Structural Detail" category="Pattern Making" />
+              </div>
+              <div className="space-y-8 pt-12 md:pt-24">
+                <PortfolioItem image={a3} title="Bespoke Corsetry" category="Masterclass" />
+                <PortfolioItem image={w3} title="Luxury Finishing" category="Tailoring" />
+              </div>
+              <div className="space-y-8">
+                <PortfolioItem image={w4} title="Modern Silhouette" category="Ready-to-Wear" />
+                <PortfolioItem image={w5} title="Fabric Manipulation" category="Artisan" />
+              </div>
+              <div className="space-y-8 pt-12 md:pt-16">
+                <PortfolioItem image={w6} title="Bridal Excellence" category="Couture" />
+                <PortfolioItem image={a2} title="Design Mastery" category="Portfolio" />
+              </div>
             </div>
-          </FadeIn>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 element-spacing">
-            {curriculum.map((item, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <div className="flex items-start gap-4 group">
-                  <div className="h-6 w-6 rounded-full border border-gold/30 flex items-center justify-center mt-1 group-hover:bg-gold transition-all duration-500">
-                    <Check className="h-3 w-3 text-gold group-hover:text-black transition-colors" />
-                  </div>
-                  <span className="text-sm uppercase tracking-[0.2em] font-light leading-relaxed group-hover:text-gold transition-colors duration-500">{item}</span>
+          </div>
+        </section>
+
+        {/* BRAND POSITIONING: Core Pillars */}
+        <section className="section-padding-lg bg-black text-white relative texture-grain">
+          <div className="absolute inset-0 opacity-10">
+            <img src={fabricImage} alt="" className="w-full h-full object-cover" />
+          </div>
+          <div className="editorial-container relative z-10">
+            <div className="grid lg:grid-cols-2 gap-24 items-center">
+              <FadeIn direction="right">
+                <h2 className="text-white text-balance leading-tight">
+                  The Gold Standard <br />
+                  <span className="italic text-gold">in Fashion Education</span>
+                </h2>
+                <p className="mt-8 text-neutral-400 text-lg font-light leading-relaxed max-w-lg">
+                  Fiatstyle Academy was born to restore the dignity of craftsmanship. We don't just teach you how to sew; we teach you how to see.
+                </p>
+                <div className="mt-12 grid grid-cols-2 gap-12">
+                  <Pillar title="Skill" desc="Master technical precision" />
+                  <Pillar title="Vision" desc="Cultivate creative voice" />
+                  <Pillar title="Prestige" desc="Join elite alum community" />
+                  <Pillar title="Results" desc="Global career readiness" />
                 </div>
               </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Student Work Showcase */}
-      <section className="section-spacing bg-neutral-50">
-        <div className="container">
-          <FadeIn>
-            <div className="text-left mb-24">
-              <span className="label text-gold mb-6 block">The Transformation</span>
-              <h2 className="tracking-tighter">
-                Student <span className="italic">Excellence</span>
-              </h2>
-            </div>
-          </FadeIn>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { img: a1, title: "Signature Couture", desc: "Advanced pattern making and structural design." },
-              { img: w1, title: "Asoebi Mastery", desc: "Traditional elegance meets modern tailoring." },
-              { img: a3, title: "Master Corsetry", desc: "Technical precision in bespoke corsetry." }
-            ].map((work, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <div className="group cursor-pointer">
-                  <div className="aspect-[3/4] overflow-hidden bg-neutral-200 mb-6">
-                    <img src={work.img} alt={work.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110" />
-                  </div>
-                  <h3 className="font-display text-2xl uppercase mb-2">{work.title}</h3>
-                  <p className="text-sm text-muted-foreground font-light leading-relaxed">{work.desc}</p>
+              <FadeIn direction="left" delay={0.2}>
+                <div className="aspect-portrait relative overflow-hidden group">
+                  <img src={a2} alt="Workshop" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms]" />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-all duration-500" />
                 </div>
               </FadeIn>
-            ))}
+            </div>
           </div>
-          
-          <div className="mt-20 text-center">
-            <a href="/work" className="group inline-flex items-center gap-4 text-[10px] uppercase tracking-[0.4em] border-b border-gold pb-2 hover:text-gold transition-colors font-medium">
-              View Full Gallery <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-2" />
-            </a>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Testimonials Section */}
-      <section className="py-40 bg-black text-white overflow-hidden">
-        <div className="container">
-          <div className="grid lg:grid-cols-[1fr_2fr] gap-24 items-center">
-            <div>
-              <span className="label text-gold mb-8 block">Success Stories</span>
-              <h2 className="mb-8">
-                In Their <br />
-                <span className="italic text-gold">Own Words</span>
-              </h2>
-              <p className="text-lg text-neutral-400 font-light mb-12">
-                Join a community of designers who have transformed their passion into a professional career.
-              </p>
+        {/* PROGRAMS: Premium Offerings */}
+        <section className="section-padding-lg bg-neutral-50">
+          <div className="editorial-container">
+            <FadeIn>
+              <div className="text-center mb-24">
+                <span className="label text-gold mb-4 block">Our Curriculum</span>
+                <h2 className="text-balance uppercase tracking-tight">Elite <span className="italic">Programs</span></h2>
+              </div>
+            </FadeIn>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-black/5 shadow-luxury">
+              <ProgramCard 
+                image={w1}
+                title="Intermediate"
+                duration="90 Days"
+                level="Level 01"
+                outcome="Professional Foundation"
+                price="₦85,000"
+              />
+              <ProgramCard 
+                image={a3}
+                title="Advanced Couture"
+                duration="90 Days"
+                level="Level 02"
+                outcome="Master Tailoring"
+                price="₦120,000"
+              />
+              <ProgramCard 
+                image={a1}
+                title="Corsetry Mastery"
+                duration="30 Days"
+                level="Specialist"
+                outcome="Bespoke Skills"
+                price="₦45,000"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* TESTIMONIALS: Minimal & Elegant */}
+        <section className="section-padding-lg bg-white border-y border-black/5">
+          <div className="editorial-container">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+              <FadeIn>
+                <span className="label text-gold mb-4 block">Testimonials</span>
+                <h2 className="text-balance">Success <span className="italic">Stories</span></h2>
+              </FadeIn>
               <div className="flex gap-4">
-                <div className="h-12 w-12 rounded-full border border-gold/30 flex items-center justify-center">
-                  <Quote className="h-5 w-5 text-gold" />
-                </div>
-                <div className="flex -space-x-4">
-                  {[a1, a2, a3].map((img, i) => (
-                    <div key={i} className="h-12 w-12 rounded-full border-2 border-black overflow-hidden bg-neutral-800">
-                      <img src={img} alt="Student" className="w-full h-full object-cover" />
-                    </div>
-                  ))}
+                <div className="h-14 w-14 rounded-full border border-black/5 flex items-center justify-center bg-neutral-50">
+                  <Quote className="h-6 w-6 text-gold opacity-40" />
                 </div>
               </div>
             </div>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              {[
-                { n: "Olu Adeyemi", c: "Lagos · '23", q: "The textile module rewired how I sourced fabric. Game over." },
-                { n: "Amina Kessler", c: "Berlin · '24", q: "Six months in I had a capsule stocked at a Paris concept store." },
-                { n: "Priya Shah", c: "Mumbai · '24", q: "I came in sketching jeans. I left with a runway-ready collection." },
-                { n: "Mira Hoffman", c: "NYC · '24", q: "Best money I've spent on education, full stop." }
-              ].map((t, i) => (
-                <FadeIn key={i} delay={i * 0.1}>
-                  <div className="p-8 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
-                    <div className="flex gap-1 text-gold mb-6">
-                      {[...Array(5)].map((_, i) => <Star key={i} className="h-3 w-3 fill-current" />)}
-                    </div>
-                    <p className="font-display text-xl mb-6 leading-snug">"{t.q}"</p>
-                    <div>
-                      <p className="text-sm font-medium">{t.n}</p>
-                      <p className="text-[10px] uppercase tracking-[0.2em] text-gold">{t.c}</p>
-                    </div>
-                  </div>
-                </FadeIn>
-              ))}
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <TestimonialCard 
+                quote="The technical depth is unmatched. I left with a runway-ready collection." 
+                author="Olu Adeyemi" 
+                location="Lagos · '23"
+              />
+              <TestimonialCard 
+                quote="Six months in and I had already secured my first global concept store listing." 
+                author="Amina Kessler" 
+                location="Berlin · '24"
+              />
+              <TestimonialCard 
+                quote="The textile module rewired how I source and see fabric. Simply game-changing." 
+                author="Priya Shah" 
+                location="Mumbai · '24"
+              />
+              <TestimonialCard 
+                quote="Best money I've spent on my career. The mentors are world-class." 
+                author="Mira Hoffman" 
+                location="NYC · '24"
+              />
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Information Grid Section */}
-      <section className="section-spacing">
-        <div className="container">
-          <div className="text-left mb-24">
-            <span className="label text-gold mb-6 block">Our Programs</span>
-            <h2 className="tracking-tighter">
-              Elite <span className="italic">Curriculum</span>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-black/5">
-            <InfoCard 
-              image={w1}
-              title="3 Month Intermediate"
-              subtitle="Professional training"
-              link="/courses"
-              delay={0}
-            />
-            <InfoCard 
-              image={a3}
-              title="3 Month Advanced"
-              subtitle="Couture mastery"
-              link="/courses"
-              delay={0.1}
-            />
-            <InfoCard 
-              image={a1}
-              title="Corsetry"
-              subtitle="1 Month Masterclass"
-              link="/courses"
-              delay={0.2}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-40 md:py-60 bg-white text-left border-t border-black/5">
-        <div className="container">
-          <FadeIn>
-            <span className="label text-gold mb-8 block">+234 813 204 9363</span>
-            <h2 className="tracking-tighter mb-8 md:mb-12">
-              Transform Your <br />
-              <span className="italic text-gold">Creative Future</span>
-            </h2>
-            <p className="max-w-xl text-muted-foreground mb-16 font-light text-lg">
-              Don't wait for permission to be great. Join the next cohort of elite designers and master the art of couture in 90 days.
-            </p>
-            <div className="flex flex-col items-start gap-6">
-              <a href="/enroll" className="btn-luxury-primary px-20 py-8">
-                Apply Now — Limited Slots
-              </a>
-              <p className="label text-muted-foreground">
-                Final intake for 2026 starting soon
+        {/* FINAL CTA: High Impact */}
+        <section className="section-padding-xl bg-white text-center relative overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-black/10 to-transparent" />
+          
+          <div className="editorial-container relative z-10">
+            <FadeIn>
+              <span className="label text-gold mb-10 block font-bold">+234 813 204 9363</span>
+              <h2 className="text-5xl md:text-[8rem] uppercase leading-[0.9] tracking-tighter mb-12">
+                Transform Your <br />
+                <span className="italic text-gold">Signature</span>
+              </h2>
+              <p className="max-w-2xl mx-auto text-muted-foreground mb-16 text-xl font-light">
+                Join the elite cohort of designers redefining modern couture. Limited seats remaining for the 2026 intake.
               </p>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+              <div className="flex flex-col items-center gap-8">
+                <a href="/enroll" className="btn-luxury-primary px-24 py-8 text-sm group hover:scale-105 transition-transform">
+                  Apply Now — Secure Your Spot
+                </a>
+                <p className="label text-muted-foreground flex items-center gap-3">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gold animate-ping" />
+                  Only 4 Slots Remaining for May
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+      </div>
     </PublicLayout>
   );
 }
 
-function InfoCard({ image, title, subtitle, link, delay }: { image: string, title: string, subtitle: string, link: string, delay: number }) {
+function PortfolioItem({ image, title, category }: { image: string, title: string, category: string }) {
   return (
-    <FadeIn delay={delay} direction="none" className="h-full">
-      <motion.a 
-        href={link}
-        className="group relative aspect-[4/5] overflow-hidden bg-white p-10 flex flex-col justify-end h-full"
-        whileHover={{ y: -10 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="absolute inset-0 z-0">
-          <img src={image} alt={title} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000 opacity-20 group-hover:opacity-40" loading="lazy" />
+    <FadeIn direction="up">
+      <div className="group cursor-pointer">
+        <div className="aspect-portrait overflow-hidden bg-neutral-100 mb-6 shadow-soft hover-lift">
+          <img 
+            src={image} 
+            alt={title} 
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[1.5s] group-hover:scale-110" 
+          />
         </div>
-        <div className="absolute inset-0 border-0 group-hover:border-[12px] border-gold/20 transition-all duration-500" />
-        <div className="relative z-10 space-y-4">
-          <span className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold">{subtitle}</span>
-          <h3 className="font-display text-2xl lg:text-3xl uppercase group-hover:italic transition-all duration-500">{title}</h3>
-          <ArrowRight className="h-5 w-5 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-2 text-gold" />
+        <span className="label text-[9px] text-gold mb-2 block">{category}</span>
+        <h3 className="font-display text-xl uppercase tracking-tight group-hover:italic transition-all">{title}</h3>
+      </div>
+    </FadeIn>
+  );
+}
+
+function Pillar({ title, desc }: { title: string, desc: string }) {
+  return (
+    <div className="space-y-2">
+      <h4 className="text-gold font-display text-2xl italic">{title}</h4>
+      <p className="text-[10px] uppercase tracking-[0.2em] text-white/50">{desc}</p>
+    </div>
+  );
+}
+
+function ProgramCard({ image, title, duration, level, outcome, price }: { image: string, title: string, duration: string, level: string, outcome: string, price: string }) {
+  return (
+    <FadeIn direction="none">
+      <div className="bg-white p-12 group relative h-full flex flex-col justify-between hover:bg-black hover:text-white transition-colors duration-700">
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 overflow-hidden">
+          <img src={image} alt="" className="w-full h-full object-cover grayscale" />
         </div>
-      </motion.a>
+        <div className="relative z-10">
+          <div className="flex justify-between items-start mb-12">
+            <span className="text-[10px] uppercase tracking-[0.3em] opacity-40">{level}</span>
+            <span className="font-mono text-xs text-gold">{price}</span>
+          </div>
+          <h3 className="text-3xl lg:text-4xl uppercase mb-8 group-hover:italic transition-all duration-700 leading-tight">
+            {title}
+          </h3>
+          <ul className="space-y-4 mb-12">
+            <li className="flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] opacity-60">
+              <div className="h-1 w-1 rounded-full bg-gold" /> {duration} Professional Training
+            </li>
+            <li className="flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] opacity-60">
+              <div className="h-1 w-1 rounded-full bg-gold" /> {outcome}
+            </li>
+          </ul>
+        </div>
+        <a href="/enroll" className="relative z-10 group-hover:text-gold flex items-center gap-4 text-[10px] uppercase tracking-[0.4em] font-bold border-b border-black/10 group-hover:border-gold pb-2 transition-all">
+          Enquire <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-2" />
+        </a>
+      </div>
+    </FadeIn>
+  );
+}
+
+function TestimonialCard({ quote, author, location }: { quote: string, author: string, location: string }) {
+  return (
+    <FadeIn direction="up">
+      <div className="p-8 border border-black/5 hover:border-gold/30 transition-all duration-500 group h-full flex flex-col justify-between">
+        <div>
+          <div className="flex gap-1 text-gold mb-8">
+            {[...Array(5)].map((_, i) => <Star key={i} className="h-2 w-2 fill-current" />)}
+          </div>
+          <p className="font-display text-xl mb-10 leading-snug text-balance">"{quote}"</p>
+        </div>
+        <div>
+          <p className="text-sm font-bold uppercase tracking-widest">{author}</p>
+          <p className="text-[9px] uppercase tracking-[0.3em] text-gold mt-1">{location}</p>
+        </div>
+      </div>
     </FadeIn>
   );
 }

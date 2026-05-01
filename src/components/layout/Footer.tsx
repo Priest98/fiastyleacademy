@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   const socials = [
-    { name: "TikTok", label: "Fiastyles of Ilorin" },
-    { name: "Instagram", label: "Fiastyles_premium_xlusive" }
+    { name: "TikTok", label: "Fiatstyles of Ilorin" },
+    { name: "Instagram", label: "Fiatstyles_premium_xlusive" }
   ];
 
   return (
@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="py-24 grid gap-16 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="font-display text-3xl tracking-tight">
-              FIASTYLE<span className="text-gold">ACADEMY</span>
+              FIATSTYLE<span className="text-gold">ACADEMY</span>
             </div>
             <p className="mt-6 text-sm text-muted-foreground max-w-sm font-light leading-loose">
               Premium online fashion training for the next generation of couture designers. 
@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-black/5 py-10 flex flex-col md:flex-row gap-4 justify-between text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-light">
-          <span>© 2026 Fiastyle Fashion Academy.</span>
+          <span>© 2026 Fiatstyle Fashion Academy.</span>
           <span>Mastering the Art — Ilorin</span>
         </div>
       </div>

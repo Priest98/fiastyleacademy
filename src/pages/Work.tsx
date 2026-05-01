@@ -13,55 +13,56 @@ import w6 from "@/assets/student-work/IMG_4936.JPG.jpeg";
 import FadeIn from "@/components/animations/FadeIn";
 
 const gallery = [
-  { title: "Signature Couture", artist: "Fiastyle Graduate", image: a1 },
-  { title: "Structural Precision", artist: "Fiastyle Graduate", image: a2 },
-  { title: "Master Corsetry", artist: "Fiastyle Graduate", image: a3 },
-  { title: "Asoebi Mastery", artist: "Fiastyle Graduate", image: w1 },
-  { title: "Design Detailing", artist: "Fiastyle Graduate", image: w2 },
-  { title: "Advanced Tailoring", artist: "Fiastyle Graduate", image: w3 },
-  { title: "The Modern Silhouette", artist: "Fiastyle Graduate", image: w4 },
-  { title: "Couture Craftsmanship", artist: "Fiastyle Graduate", image: w5 },
-  { title: "Bridal Excellence", artist: "Fiastyle Graduate", image: w6 },
+  { title: "Signature Couture", artist: "Fiatstyle Graduate", image: a1, category: "Advanced" },
+  { title: "Structural Precision", artist: "Fiatstyle Graduate", image: a2, category: "Pattern Making" },
+  { title: "Master Corsetry", artist: "Fiatstyle Graduate", image: a3, category: "Masterclass" },
+  { title: "Asoebi Mastery", artist: "Fiatstyle Graduate", image: w1, category: "Traditional" },
+  { title: "Design Detailing", artist: "Fiatstyle Graduate", image: w2, category: "Tailoring" },
+  { title: "Advanced Tailoring", artist: "Fiatstyle Graduate", image: w3, category: "Couture" },
+  { title: "The Modern Silhouette", artist: "Fiatstyle Graduate", image: w4, category: "Ready-to-Wear" },
+  { title: "Couture Craftsmanship", artist: "Fiatstyle Graduate", image: w5, category: "Artisan" },
+  { title: "Bridal Excellence", artist: "Fiatstyle Graduate", image: w6, category: "Bridal" },
 ];
 
 export default function Work() {
   return (
     <PublicLayout>
-      <section className="container pt-40 pb-24 text-center">
-        <FadeIn>
-          <span className="text-[10px] uppercase tracking-[0.5em] text-gold mb-6 block font-bold">Student Showcase</span>
-          <h1 className="font-display text-5xl md:text-8xl uppercase tracking-tighter mb-10">
-            The <span className="italic">Gallery</span>
+      <section className="editorial-container section-padding-lg">
+        <FadeIn className="text-center">
+          <span className="label text-gold mb-6 block">Student Showcase</span>
+          <h1 className="text-balance mb-10">
+            The <span className="italic text-gold">Gallery</span>
           </h1>
-          <p className="text-muted-foreground max-w-xl mx-auto font-light leading-relaxed">
+          <p className="text-muted-foreground max-w-xl mx-auto font-light leading-relaxed text-lg">
             A curation of exceptional works from our graduating designers. 
             Each piece represents months of technical mastery and creative vision.
           </p>
         </FadeIn>
       </section>
 
-      <section className="container pb-32">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-black/5">
+      <section className="editorial-container pb-32 md:pb-48">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {gallery.map((item, idx) => (
             <FadeIn key={idx} delay={idx * 0.05} direction="up">
               <motion.div
-                className="bg-white p-8 group relative overflow-hidden"
-                whileHover={{ y: -4 }}
+                className="group cursor-pointer"
+                whileHover={{ y: -8 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="aspect-[3/4] overflow-hidden mb-6 relative bg-neutral-100">
+                <div className="aspect-portrait overflow-hidden mb-6 relative bg-neutral-100 shadow-soft">
                   <img 
                     src={item.image} 
                     alt={item.title} 
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" 
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[1.5s] group-hover:scale-110" 
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-500" />
                 </div>
                 <div className="flex justify-between items-end">
                   <div>
-                    <h3 className="font-display text-xl uppercase mb-1">{item.title}</h3>
-                    <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">{item.artist}</p>
+                    <span className="label text-[9px] text-gold mb-2 block">{item.category}</span>
+                    <h3 className="text-xl uppercase mb-1 group-hover:italic transition-all">{item.title}</h3>
+                    <p className="label opacity-40 text-[10px]">{item.artist}</p>
                   </div>
                   <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-2 text-gold" />
                 </div>
@@ -71,10 +72,10 @@ export default function Work() {
         </div>
       </section>
 
-      <section className="container py-40 border-t border-black/5 text-center">
+      <section className="editorial-container section-padding-lg border-t border-black/5 text-center">
         <FadeIn>
-          <h2 className="font-display text-4xl uppercase mb-8">Inspired by our students?</h2>
-          <a href="/enroll" className="btn-luxury-primary inline-flex">
+          <h2 className="text-3xl md:text-5xl uppercase mb-12">Inspired by our students?</h2>
+          <a href="/enroll" className="btn-luxury-primary px-20 py-8 inline-flex">
             Step Into Couture
           </a>
         </FadeIn>

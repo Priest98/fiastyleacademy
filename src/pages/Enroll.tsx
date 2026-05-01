@@ -8,16 +8,16 @@ export default function Enroll() {
   const [step, setStep] = useState(0);
   return (
     <PublicLayout>
-      <section className="container pt-24 md:pt-40">
-        <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Enrollment · 2026 Intake</p>
-        <h1 className="font-display text-4xl md:text-6xl mt-4">Reserve your seat.</h1>
-        <p className="mt-4 text-sm text-muted-foreground font-light italic">"Takes less than 1 minute — Secure your future in fashion."</p>
+      <section className="editorial-container section-padding-lg">
+        <p className="label text-muted-foreground">Enrollment · 2026 Intake</p>
+        <h1 className="mt-4">Reserve your seat.</h1>
+        <p className="mt-4 text-lg text-muted-foreground font-light italic">"Takes less than 1 minute — Secure your future in fashion."</p>
 
         <div className="mt-8 md:mt-12 flex items-center gap-2 overflow-x-auto pb-4 md:pb-0 scrollbar-hide">
           {steps.map((s,i)=>(
             <div key={s} className="flex items-center gap-2 shrink-0">
-              <div className={`h-8 w-8 rounded-full grid place-items-center text-[10px] font-mono ${i<=step?"bg-foreground text-background":"bg-foreground/10"}`}>{i+1}</div>
-              <span className="text-[10px] uppercase tracking-[0.2em]">{s}</span>
+              <div className={`h-10 w-10 rounded-full grid place-items-center text-[10px] font-mono ${i<=step?"bg-foreground text-background":"bg-foreground/10"}`}>{i+1}</div>
+              <span className="label">{s}</span>
               {i<steps.length-1 && <span className="w-8 md:w-12 h-px bg-border mx-2 md:mx-3"/>}
             </div>
           ))}
@@ -47,7 +47,7 @@ export default function Enroll() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                 {["First name","Last name","Email","Phone","City","Portfolio link"].map(l=>(
                   <div key={l}>
-                    <label className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{l}</label>
+                    <label className="label text-muted-foreground mb-2 block">{l}</label>
                     <input className="mt-2 w-full bg-transparent border-b border-black/10 focus:border-black outline-none py-2 text-sm transition-all" />
                   </div>
                 ))}
@@ -56,14 +56,14 @@ export default function Enroll() {
             {step===2 && (
               <div className="space-y-6 md:space-y-8">
                 <h2 className="font-display text-xl md:text-2xl">Payment Selection</h2>
-                <div className="rounded-xl border border-black/5 p-5 bg-neutral-50">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Bank Transfer (Recommended)</p>
+                <div className="rounded-xl border border-black/5 p-8 bg-neutral-50 shadow-soft">
+                  <p className="label text-muted-foreground">Bank Transfer (Recommended)</p>
                   <p className="mt-2 font-display text-lg">Guaranty Trust Bank</p>
-                  <p className="font-mono text-sm tracking-widest mt-1">0123456789 · Fiastyle Academy</p>
+                  <p className="font-mono text-sm tracking-widest mt-1">0123456789 · Fiatstyle Academy</p>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <button className="rounded-none border border-black/10 py-4 text-[10px] uppercase tracking-[0.2em] hover:bg-black hover:text-white transition-all">Card Payment</button>
-                  <button className="rounded-none border border-black/10 py-4 text-[10px] uppercase tracking-[0.2em] hover:bg-black hover:text-white transition-all">Paystack Check</button>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <button className="btn-luxury-secondary w-full">Card Payment</button>
+                  <button className="btn-luxury-secondary w-full">Paystack Check</button>
                 </div>
               </div>
             )}
@@ -76,25 +76,25 @@ export default function Enroll() {
             </div>
           </div>
 
-          <aside className="rounded-xl border border-black/5 p-6 bg-surface h-max">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Application Details</p>
+          <aside className="rounded-xl border border-black/5 p-8 bg-neutral-50 h-max shadow-luxury">
+            <p className="label text-muted-foreground">Application Details</p>
             <div className="mt-4 space-y-3 text-sm">
               <Row l="Intermediate Class" v="₦85,000"/>
               <Row l="Materials Kit" v="₦15,000"/>
               <Row l="Tax / Fees" v="Included"/>
             </div>
-            <div className="mt-6 pt-6 border-t border-black/5 flex justify-between items-end">
-              <span className="text-[10px] uppercase tracking-[0.2em]">Total</span>
-              <span className="font-display text-3xl">₦100,000</span>
+            <div className="mt-8 pt-8 border-t border-black/5 flex justify-between items-end">
+              <span className="label">Total</span>
+              <span className="font-display text-4xl">₦100,000</span>
             </div>
-            <ul className="mt-8 space-y-3 text-[10px] text-muted-foreground uppercase tracking-widest">
+            <ul className="mt-10 space-y-4 text-[10px] text-muted-foreground uppercase tracking-widest font-medium">
               {["Secure SSL Payment","Lifetime Alumni Group","2026 Batch Enrollment", "Join 1,000+ Successful Alumni"].map(x=>(
                 <li key={x} className="flex gap-3 items-center"><Check className="h-3 w-3 text-gold"/>{x}</li>
               ))}
             </ul>
             <div className="mt-8 p-4 bg-neutral-50 border border-black/5 rounded-lg">
               <p className="text-[10px] uppercase tracking-[0.1em] text-muted-foreground leading-relaxed">
-                "Fiastyle Academy transformed my career. The technical depth is unmatched."
+                "Fiatstyle Academy transformed my career. The technical depth is unmatched."
               </p>
               <p className="mt-2 text-[10px] font-bold text-gold uppercase tracking-widest">— Olu Adeyemi, Alumni</p>
             </div>
