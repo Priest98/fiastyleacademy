@@ -144,7 +144,7 @@ export default function Index() {
               </FadeIn>
               <FadeIn direction="left" delay={0.2}>
                 <div className="aspect-portrait relative overflow-hidden group">
-                  <img src={cat5_8} alt="Workshop" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms]" />
+                  <img src={cat5_8} alt="Workshop" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[2000ms]" />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-all duration-500" />
                 </div>
               </FadeIn>
