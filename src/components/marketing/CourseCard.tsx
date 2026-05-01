@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CourseModal from "./CourseModal";
+import { useCursorPreview } from "@/context/CursorPreviewContext";
 
 export type Course = {
   slug: string;
@@ -27,6 +28,7 @@ export default function CourseCard({ c }: { c: Course }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isTapped, setIsTapped] = useState(false);
+  const { showPreview, hidePreview } = useCursorPreview();
 
   // On mobile: tap to toggle reveal; on desktop: hover
   const isRevealed = isHovered || isTapped;
@@ -36,14 +38,14 @@ export default function CourseCard({ c }: { c: Course }) {
       <motion.div
         className="relative group cursor-pointer overflow-hidden"
         style={{ aspectRatio: "3/4" }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={() => { setIsHovered(true); showPreview(c.image, c.title, c.category); }}
+        onMouseLeave={() => { setIsHovered(false); hidePreview(); }}
         onTap={() => setIsTapped((v) => !v)}
         onClick={() => {
           // On desktop (hover was active), open modal directly
-          if (isHovered) setIsModalOpen(true);
+          if (isHovered) { hidePreview(); setIsModalOpen(true); }
           // On mobile, first tap reveals, second tap opens modal
-          else if (isTapped) setIsModalOpen(true);
+          else if (isTapped) { hidePreview(); setIsModalOpen(true); }
         }}
         whileHover={{ scale: 1.0 }}
       >

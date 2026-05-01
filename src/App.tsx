@@ -24,16 +24,20 @@ import Students from "./pages/admin/Students.tsx";
 import Payments from "./pages/admin/Payments.tsx";
 
 import SmoothScroll from "@/components/layout/SmoothScroll";
+import { CursorPreviewProvider } from "@/context/CursorPreviewContext";
+import CursorPreview from "@/components/ui/CursorPreview";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <SmoothScroll>
+      <CursorPreviewProvider>
+        <CursorPreview />
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <SmoothScroll>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/courses" element={<Courses />} />
@@ -56,8 +60,9 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </SmoothScroll>
-      </BrowserRouter>
+          </SmoothScroll>
+        </BrowserRouter>
+      </CursorPreviewProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

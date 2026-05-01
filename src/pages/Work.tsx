@@ -1,6 +1,7 @@
 import PublicLayout from "@/components/layout/PublicLayout";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useCursorPreview } from "@/context/CursorPreviewContext";
 import cat1_1 from "@/assets/new/category1/cat1-1.jpg";
 import cat1_2 from "@/assets/new/category1/cat1-2.jpg";
 import cat1_3 from "@/assets/new/category1/cat1-3.jpg";
@@ -46,13 +47,14 @@ function GalleryCard({ item }: { item: typeof gallery[0] }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isTapped, setIsTapped] = useState(false);
   const isRevealed = isHovered || isTapped;
+  const { showPreview, hidePreview } = useCursorPreview();
 
   return (
     <motion.div
       className="relative overflow-hidden cursor-pointer"
       style={{ aspectRatio: "3/4" }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => { setIsHovered(true); showPreview(item.image, item.title, item.category); }}
+      onMouseLeave={() => { setIsHovered(false); hidePreview(); }}
       onTap={() => setIsTapped(v => !v)}
     >
       {/* ── Image ── */}
