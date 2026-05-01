@@ -12,7 +12,8 @@ export const courses: Course[] = [
     level: "Intermediate", 
     price: "₦85,000", 
     image: cat1_11, 
-    seats: 20 
+    seats: 20,
+    description: "Master bespoke garment construction, precision tailoring, and the fundamentals of luxury finishing.",
   },
   { 
     slug: "advanced-class", 
@@ -22,7 +23,8 @@ export const courses: Course[] = [
     level: "Advanced", 
     price: "₦120,000", 
     image: cat5_3, 
-    seats: 15 
+    seats: 15,
+    description: "Elevate your craft into couture-level silhouette design, advanced draping, and editorial portfolio development.",
   },
   { 
     slug: "corsetry-masterclass", 
@@ -32,6 +34,7 @@ export const courses: Course[] = [
     level: "All levels", 
     price: "₦45,000", 
     image: cat5_7, 
-    seats: 25 
+    seats: 25,
+    description: "An intensive deep-dive into the art of structured corsetry—from heritage boning techniques to modern sculptural design.",
   },
 ];
