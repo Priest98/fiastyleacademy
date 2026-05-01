@@ -529,7 +529,7 @@ function LookbookCard({
                   <motion.span
                     className="absolute -bottom-1 left-0 h-px bg-current"
                     initial={{ width: 0 }}
-                    animate={{ width: isHovered ? "100%"" : 0 }}
+                    animate={{ width: isHovered ? "100%" : 0 }}
                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                   />
                 </span>
