@@ -22,6 +22,7 @@ import fabricImage from "@/assets/fabric.png";
 import greenImage from "@/assets/new/category2/green.jpeg";
 import redImage from "@/assets/new/category5/red.jpeg";
 import blackImage from "@/assets/new/category4/black.jpeg";
+import brownImage from "@/assets/new/student-work/brown.jpeg";
 
 export default function Index() {
   const containerRef = useRef(null);
@@ -153,7 +154,7 @@ export default function Index() {
                   description="Grandeur and grace in every hand-stitched layer."
                 />
                 <LookbookItem 
-                  image={greenImage} 
+                  image={brownImage} 
                   title="Design Mastery" 
                   category="Portfolio" 
                   description="A comprehensive showcase of industry-ready creative vision."
