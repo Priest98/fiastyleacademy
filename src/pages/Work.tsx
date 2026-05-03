@@ -13,6 +13,9 @@ import cat4_1 from "@/assets/new/category4/cat4-1.jpg";
 import cat5_1 from "@/assets/new/category5/cat5-1.jpg";
 import cat5_2 from "@/assets/new/category5/cat5-2.jpg";
 import cat5_3 from "@/assets/new/category5/cat5-3.jpg";
+import white1 from "@/assets/new/student-work/white.jpeg";
+import barryWhite from "@/assets/new/student-work/barry-white.jpeg";
+import jerryWhite from "@/assets/new/student-work/jerry-white.jpeg";
 import FadeIn from "@/components/animations/FadeIn";
 
 const easing = [0.22, 1, 0.36, 1] as const;
@@ -39,6 +42,9 @@ const gallery = [
   { title: "Evening Glamour",      artist: "Fiatstyle Graduate", image: cat2_2, category: "Couture",       description: "Red-carpet-ready drama in every seam, designed for maximum visual impact." },
   { title: "Conceptual Design",    artist: "Fiatstyle Graduate", image: cat3_2, category: "Portfolio",     description: "A concept-led piece exploring the dialogue between form, identity, and craft." },
   { title: "Textile Mastery",      artist: "Fiatstyle Graduate", image: cat5_3, category: "Artisan",       description: "An exploration of fabric manipulation, texture, and tactile luxury." },
+  { title: "White Collection",    artist: "Fiatstyle Graduate", image: white1, category: "Bridal",        description: "A masterclass in bridal elegance — where heritage craft meets modern vision." },
+  { title: "Barry White Signature", artist: "Fiatstyle Graduate", image: barryWhite, category: "Bridal",  description: "Grandeur redefined. A breathtaking ball gown featuring intricate hand-beading." },
+  { title: "Jerry White Couture",  artist: "Fiatstyle Graduate", image: jerryWhite, category: "Bridal",   description: "Couture precision meets ethereal grace in this signature bridal creation." },
 ];
 
 // ── Individual Gallery Card ───────────────────────────────────────────────────

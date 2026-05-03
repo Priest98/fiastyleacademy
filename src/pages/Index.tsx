@@ -19,6 +19,9 @@ import cat4_2 from "@/assets/new/category4/cat4-2.jpg";
 import cat5_1 from "@/assets/new/category5/cat5-1.jpg";
 import cat5_8 from "@/assets/new/category5/cat5-8.jpg";
 import fabricImage from "@/assets/fabric.png";
+import greenImage from "@/assets/new/category2/green.jpeg";
+import redImage from "@/assets/new/category5/red.jpeg";
+import blackImage from "@/assets/new/category4/black.jpeg";
 
 export default function Index() {
   const containerRef = useRef(null);
@@ -116,7 +119,7 @@ export default function Index() {
               </div>
               <div className="space-y-8 pt-12 md:pt-24">
                 <LookbookItem 
-                  image={cat2_5} 
+                  image={greenImage} 
                   title="Bespoke Corsetry" 
                   category="Masterclass" 
                   description="Precision boning and heritage construction techniques."
@@ -130,13 +133,13 @@ export default function Index() {
               </div>
               <div className="space-y-8">
                 <LookbookItem 
-                  image={cat4_1} 
+                  image={blackImage} 
                   title="Modern Silhouette" 
                   category="Ready-to-Wear" 
                   description="Minimalist aesthetics meets functional fashion design."
                 />
                 <LookbookItem 
-                  image={cat5_1} 
+                  image={redImage} 
                   title="Fabric Manipulation" 
                   category="Artisan" 
                   description="Transforming textiles into sculptural works of art."
@@ -150,7 +153,7 @@ export default function Index() {
                   description="Grandeur and grace in every hand-stitched layer."
                 />
                 <LookbookItem 
-                  image={cat3_2} 
+                  image={greenImage} 
                   title="Design Mastery" 
                   category="Portfolio" 
                   description="A comprehensive showcase of industry-ready creative vision."
@@ -209,7 +212,7 @@ export default function Index() {
                 duration="90 Days"
                 level="Level 01"
                 outcome="Professional Foundation"
-                price="₦85,000"
+                price="₦100,000"
               />
               <ProgramCard 
                 image={cat2_2}
@@ -217,7 +220,7 @@ export default function Index() {
                 duration="90 Days"
                 level="Level 02"
                 outcome="Master Tailoring"
-                price="₦120,000"
+                price="₦100,000"
               />
               <ProgramCard 
                 image={cat3_1}
@@ -225,7 +228,7 @@ export default function Index() {
                 duration="30 Days"
                 level="Specialist"
                 outcome="Bespoke Skills"
-                price="₦45,000"
+                price="₦50,000"
               />
             </div>
           </div>

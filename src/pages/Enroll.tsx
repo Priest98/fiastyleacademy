@@ -29,9 +29,9 @@ export default function Enroll() {
               <div className="space-y-4">
                 <h2 className="font-display text-xl md:text-2xl">Choose your program</h2>
                 {[
-                  { n: "3 Month Intermediate Class", p: "₦85,000" },
-                  { n: "3 Month Advanced Class", p: "₦120,000" },
-                  { n: "1 Month Corsetry Masterclass", p: "₦45,000" }
+                  { n: "3 Month Intermediate Class", p: "₦100,000" },
+                  { n: "3 Month Advanced Class", p: "₦100,000" },
+                  { n: "1 Month Corsetry Masterclass", p: "₦50,000" }
                 ].map((item,i)=>(
                   <label key={i} className="flex items-center gap-4 p-4 md:p-5 rounded-none border border-black/10 cursor-pointer hover:bg-neutral-50 transition-colors">
                     <input type="radio" name="prog" defaultChecked={i===0} className="accent-black" />
@@ -79,13 +79,13 @@ export default function Enroll() {
           <aside className="rounded-xl border border-black/5 p-8 bg-neutral-50 h-max shadow-luxury">
             <p className="label text-muted-foreground">Application Details</p>
             <div className="mt-4 space-y-3 text-sm">
-              <Row l="Intermediate Class" v="₦85,000"/>
+              <Row l="Intermediate Class" v="₦100,000"/>
               <Row l="Materials Kit" v="₦15,000"/>
               <Row l="Tax / Fees" v="Included"/>
             </div>
             <div className="mt-8 pt-8 border-t border-black/5 flex justify-between items-end">
               <span className="label">Total</span>
-              <span className="font-display text-4xl">₦100,000</span>
+              <span className="font-display text-4xl">₦115,000</span>
             </div>
             <ul className="mt-10 space-y-4 text-[10px] text-muted-foreground uppercase tracking-widest font-medium">
               {["Secure SSL Payment","Lifetime Alumni Group","2026 Batch Enrollment", "Join 1,000+ Successful Alumni"].map(x=>(
