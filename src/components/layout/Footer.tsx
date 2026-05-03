@@ -43,7 +43,7 @@ export default function Footer() {
             <h4 className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground mb-8">Academy</h4>
             <ul className="space-y-4 text-[10px] uppercase tracking-[0.2em]">
               <li><span className="opacity-50">Ilorin, Nigeria</span></li>
-              <li><span className="opacity-50">+234 813 204 9363</span></li>
+              <li><span className="opacity-50">+234 810 507 3034</span></li>
               <li><Link to="/enroll" className="text-gold font-bold hover:brightness-110 transition-all">Secure Your Spot</Link></li>
             </ul>
           </div>

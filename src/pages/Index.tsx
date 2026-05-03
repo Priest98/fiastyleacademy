@@ -281,7 +281,7 @@ export default function Index() {
           
           <div className="editorial-container relative z-10">
             <FadeIn>
-              <span className="label text-gold mb-10 block font-bold">+234 813 204 9363</span>
+              <span className="label text-gold mb-10 block font-bold">+234 810 507 3034</span>
               <h2 className="text-5xl md:text-[8rem] uppercase leading-[0.9] tracking-tighter mb-12">
                 Transform Your <br />
                 <span className="italic text-gold">Signature</span>

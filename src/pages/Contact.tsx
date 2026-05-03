@@ -24,7 +24,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="label text-muted-foreground mb-2">WhatsApp / Phone</p>
-                  <p className="font-display text-2xl uppercase">+234 813 204 9363</p>
+                  <p className="font-display text-2xl uppercase">+234 810 507 3034</p>
                 </div>
                 <div>
                   <p className="label text-muted-foreground mb-2">Location</p>
