@@ -80,12 +80,11 @@ export default function Enroll() {
             <p className="label text-muted-foreground">Application Details</p>
             <div className="mt-4 space-y-3 text-sm">
               <Row l="Intermediate Class" v="₦100,000"/>
-              <Row l="Materials Kit" v="₦15,000"/>
               <Row l="Tax / Fees" v="Included"/>
             </div>
             <div className="mt-8 pt-8 border-t border-black/5 flex justify-between items-end">
               <span className="label">Total</span>
-              <span className="font-display text-4xl">₦115,000</span>
+              <span className="font-display text-4xl">₦100,000</span>
             </div>
             <ul className="mt-10 space-y-4 text-[10px] text-muted-foreground uppercase tracking-widest font-medium">
               {["Secure SSL Payment","Lifetime Alumni Group","2026 Batch Enrollment", "Join 1,000+ Successful Alumni"].map(x=>(
