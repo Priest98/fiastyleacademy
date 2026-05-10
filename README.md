@@ -1,3 +1,3 @@
-# Welcome to your Lovable project
+# Fiatstyles Fashion Academy
 
 TODO: Document your project here
