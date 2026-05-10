@@ -2,9 +2,9 @@ import PublicLayout from "@/components/layout/PublicLayout";
 import { Check, Minus } from "lucide-react";
 
 const tiers = [
-  { t:"Atelier", p:"€39", per:"/month", desc:"For the curious. Sample the craft.", cta:"Start", featured:false },
-  { t:"Couture", p:"€129", per:"/month", desc:"For the serious. Build your capsule.", cta:"Most chosen", featured:true },
-  { t:"Maison", p:"€2,400", per:"/season", desc:"For the founders. Launch your label.", cta:"Apply", featured:false },
+  { t:"Studio", p:"€39", per:"/month", desc:"For the curious. Sample the craft.", cta:"Start", featured:false },
+  { t:"Academy", p:"€129", per:"/month", desc:"For the serious. Build your capsule.", cta:"Most chosen", featured:true },
+  { t:"Master", p:"€2,400", per:"/season", desc:"For the founders. Launch your label.", cta:"Apply", featured:false },
 ];
 
 const features = [
@@ -20,10 +20,10 @@ const features = [
 export default function Pricing() {
   return (
     <PublicLayout>
-      <section className="container text-center">
-        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Investment</p>
-        <h1 className="font-display text-5xl md:text-7xl mt-4">Choose your house.</h1>
-        <p className="mt-6 max-w-xl mx-auto text-muted-foreground">Three paths into the institute. Move between them at any time. Cancel whenever.</p>
+      <section className="container text-center pt-24">
+        <p className="text-[10px] uppercase tracking-[0.5em] text-muted-foreground">Investment</p>
+        <h1 className="font-display text-5xl md:text-7xl mt-4 uppercase">Choose your <span className="italic">Path</span></h1>
+        <p className="mt-6 max-w-xl mx-auto text-muted-foreground font-light">Three paths into the academy. Move between them at any time. Cancel whenever.</p>
       </section>
 
       <section className="container mt-16 grid md:grid-cols-3 gap-6">

@@ -1,47 +1,79 @@
 import PublicLayout from "@/components/layout/PublicLayout";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
     <PublicLayout>
-      <section className="container grid lg:grid-cols-2 gap-16">
-        <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Get in touch</p>
-          <h1 className="font-display text-5xl md:text-7xl mt-4">Tell us what<br/>you're making.</h1>
-          <div className="mt-12 space-y-6 text-sm">
-            <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Paris atelier</p>
-              <p className="mt-1">14 rue de Saintonge, 75003</p>
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Email</p>
-              <p className="mt-1">studio@atelier.school</p>
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Press</p>
-              <p className="mt-1">press@atelier.school</p>
-            </div>
+      <section className="editorial-container section-padding-lg">
+        <div className="grid lg:grid-cols-12 gap-24 items-start">
+          <div className="lg:col-span-5">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="label text-gold mb-6 block">Contact Us</span>
+              <h1 className="text-balance mb-12">
+                Begin Your <br />
+                <span className="italic text-gold">Application</span>
+              </h1>
+              <div className="space-y-10">
+                <div>
+                  <p className="label text-muted-foreground mb-2">General Inquiries</p>
+                  <p className="font-display text-2xl uppercase">studio@fiatstyle.academy</p>
+                </div>
+                <div>
+                  <p className="label text-muted-foreground mb-2">WhatsApp / Phone</p>
+                  <p className="font-display text-2xl uppercase">+234 810 507 3034</p>
+                </div>
+                <div>
+                  <p className="label text-muted-foreground mb-2">Location</p>
+                  <p className="font-display text-2xl uppercase">Ilorin, Nigeria</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="lg:col-span-7">
+            <motion.form 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-8 md:space-y-12"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                <Field label="Full Name" placeholder="e.g. Adebayo Roland" />
+                <Field label="Email Address" type="email" placeholder="email@domain.com" />
+              </div>
+              <Field label="Program of Interest" placeholder="e.g. Intermediate Class" />
+              <div>
+                <label className="label text-muted-foreground block mb-4">Your Vision</label>
+                <textarea 
+                  rows={3} 
+                  placeholder="Tell us about your background and design goals..."
+                  className="w-full bg-transparent border-b border-black/20 focus:border-black outline-none py-2 md:py-4 text-base md:text-lg font-light transition-all resize-none" 
+                />
+              </div>
+              <button className="btn-luxury-primary px-16 py-6 w-full md:w-auto">
+                Request Admission
+              </button>
+            </motion.form>
           </div>
         </div>
-        <form className="rounded-2xl border hairline p-8 bg-card space-y-5">
-          <Field label="Name" />
-          <Field label="Email" type="email" />
-          <Field label="Topic" />
-          <div>
-            <label className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Message</label>
-            <textarea rows={5} className="mt-2 w-full bg-transparent border-b hairline focus:border-foreground outline-none py-2 text-sm" />
-          </div>
-          <button className="rounded-full bg-foreground text-background px-6 py-3.5 text-xs uppercase tracking-[0.2em] w-full">Send message</button>
-        </form>
       </section>
     </PublicLayout>
   );
 }
 
-function Field({ label, type="text" }:{label:string;type?:string}) {
+function Field({ label, type = "text", placeholder }: { label: string; type?: string; placeholder?: string }) {
   return (
-    <div>
-      <label className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{label}</label>
-      <input type={type} className="mt-2 w-full bg-transparent border-b hairline focus:border-foreground outline-none py-2 text-sm" />
+    <div className="w-full">
+      <label className="label text-muted-foreground block mb-4">{label}</label>
+      <input 
+        type={type} 
+        placeholder={placeholder}
+        className="w-full bg-transparent border-b border-black/20 focus:border-black outline-none py-4 text-lg font-light transition-all" 
+      />
     </div>
   );
 }

@@ -106,7 +106,6 @@ export default function CourseDetail() {
           <Accordion type="single" collapsible className="mt-10 border-t hairline">
             {[
               ["Do I need prior experience?","No. Foundation courses assume zero background — only curiosity."],
-              ["Is there a physical component?","Yes. We ship a starter kit (paper, muslin, marker) to your door."],
               ["What's the time commitment?","Plan 6–10 hours per week, including live critique."],
               ["Refund policy?","Full refund within 14 days, no questions."],
             ].map(([q,a],i)=>(
