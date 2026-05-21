@@ -34,7 +34,7 @@ export default function IslandHeader() {
     lastScrollY.current = latest;
   });
 
-  const isDarkThemeNeeded = !scrolled && (location.pathname === "/" || location.pathname === "/courses");
+  const isDarkThemeNeeded = !scrolled && location.pathname === "/";
 
   return (
     <motion.header 

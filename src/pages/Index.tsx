@@ -506,9 +506,9 @@ export default function Index() {
         </section>
 
         {/* BRAND POSITIONING: Core Pillars */}
-        <section className="section-padding-lg bg-black text-white relative texture-grain">
-          <div className="absolute inset-0 opacity-10">
-            <img src={fabricImage} alt="" className="w-full h-full object-cover" />
+        <section className="section-padding-lg bg-neutral-50 text-black border-y border-black/5 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-5 pointer-events-none">
+            <img src={fabricImage} alt="" className="w-full h-full object-cover grayscale" />
           </div>
           <div className="editorial-container relative z-10">
             {/* Header block with split title */}
@@ -519,7 +519,7 @@ export default function Index() {
                 </span>
               </FadeIn>
               <FadeIn direction="left" delay={0.1}>
-                <h2 className="text-white text-balance leading-tight text-left md:text-right md:max-w-xl">
+                <h2 className="text-black text-balance leading-tight text-left md:text-right md:max-w-xl">
                   The Gold Standard <br />
                   <span className="italic text-gold">in Fashion Education</span>
                 </h2>
@@ -556,36 +556,36 @@ export default function Index() {
               </FadeIn>
 
               <FadeIn direction="left" delay={0.3}>
-                <div className="bg-neutral-950/60 backdrop-blur-md border border-white/10 rounded-[2.5rem] p-10 md:p-14 shadow-luxury flex flex-col justify-between h-full relative overflow-hidden">
+                <div className="bg-white border border-black/5 rounded-[2.5rem] p-10 md:p-14 shadow-luxury flex flex-col justify-between h-full relative overflow-hidden">
                   <div className="mb-10">
-                    <h3 className="text-2xl md:text-3xl font-display text-white mb-6">Fiatstyle Academy</h3>
-                    <p className="text-neutral-300 text-base md:text-lg font-light leading-relaxed mb-6">
+                    <h3 className="text-2xl md:text-3xl font-display text-black mb-6">Fiatstyle Academy</h3>
+                    <p className="text-neutral-700 text-base md:text-lg font-light leading-relaxed mb-6">
                       was born to restore the dignity of craftsmanship. We don't just teach you how to sew; we teach you how to see.
                     </p>
-                    <p className="text-neutral-400 text-sm md:text-base font-light leading-relaxed">
+                    <p className="text-neutral-500 text-sm md:text-base font-light leading-relaxed">
                       Through hands-on mentorship, rigorous technical training, and creative cultivation, we empower designers to define their own voice and launch global careers.
                     </p>
                   </div>
 
                   {/* Circular icon badges row */}
                   <div className="flex gap-4 mb-10">
-                    <div className="h-12 w-12 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center text-gold hover:bg-gold hover:text-black transition-all duration-300 cursor-pointer" title="Skill">
+                    <div className="h-12 w-12 rounded-full bg-neutral-100 border border-black/5 flex items-center justify-center text-gold hover:bg-black hover:text-white transition-all duration-300 cursor-pointer" title="Skill">
                       <Scissors className="h-5 w-5" />
                     </div>
-                    <div className="h-12 w-12 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center text-gold hover:bg-gold hover:text-black transition-all duration-300 cursor-pointer" title="Vision">
+                    <div className="h-12 w-12 rounded-full bg-neutral-100 border border-black/5 flex items-center justify-center text-gold hover:bg-black hover:text-white transition-all duration-300 cursor-pointer" title="Vision">
                       <Eye className="h-5 w-5" />
                     </div>
-                    <div className="h-12 w-12 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center text-gold hover:bg-gold hover:text-black transition-all duration-300 cursor-pointer" title="Prestige">
+                    <div className="h-12 w-12 rounded-full bg-neutral-100 border border-black/5 flex items-center justify-center text-gold hover:bg-black hover:text-white transition-all duration-300 cursor-pointer" title="Prestige">
                       <Award className="h-5 w-5" />
                     </div>
-                    <div className="h-12 w-12 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center text-gold hover:bg-gold hover:text-black transition-all duration-300 cursor-pointer" title="Results">
+                    <div className="h-12 w-12 rounded-full bg-neutral-100 border border-black/5 flex items-center justify-center text-gold hover:bg-gold hover:text-black transition-all duration-300 cursor-pointer" title="Results">
                       <Globe className="h-5 w-5" />
                     </div>
                   </div>
 
                   {/* Why Choose Section with Pillars */}
-                  <div className="border-t border-white/10 pt-8 mt-auto">
-                    <h4 className="text-white font-display text-lg mb-6 tracking-wide">
+                  <div className="border-t border-black/5 pt-8 mt-auto">
+                    <h4 className="text-black font-display text-lg mb-6 tracking-wide">
                       Why Choose Our Programs?
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -594,7 +594,7 @@ export default function Index() {
                           <span className="h-1.5 w-1.5 rounded-full bg-gold" />
                           <span className="text-gold font-display text-base font-semibold">Skill</span>
                         </div>
-                        <p className="text-xs text-neutral-400 font-light leading-relaxed pl-3">
+                        <p className="text-xs text-neutral-500 font-light leading-relaxed pl-3">
                           Master technical precision in couture draping and tailoring.
                         </p>
                       </div>
@@ -603,7 +603,7 @@ export default function Index() {
                           <span className="h-1.5 w-1.5 rounded-full bg-gold" />
                           <span className="text-gold font-display text-base font-semibold">Vision</span>
                         </div>
-                        <p className="text-xs text-neutral-400 font-light leading-relaxed pl-3">
+                        <p className="text-xs text-neutral-500 font-light leading-relaxed pl-3">
                           Cultivate your unique and authentic creative voice.
                         </p>
                       </div>
@@ -612,7 +612,7 @@ export default function Index() {
                           <span className="h-1.5 w-1.5 rounded-full bg-gold" />
                           <span className="text-gold font-display text-base font-semibold">Prestige</span>
                         </div>
-                        <p className="text-xs text-neutral-400 font-light leading-relaxed pl-3">
+                        <p className="text-xs text-neutral-500 font-light leading-relaxed pl-3">
                           Join our elite alumni network of active fashion houses.
                         </p>
                       </div>
@@ -621,7 +621,7 @@ export default function Index() {
                           <span className="h-1.5 w-1.5 rounded-full bg-gold" />
                           <span className="text-gold font-display text-base font-semibold">Results</span>
                         </div>
-                        <p className="text-xs text-neutral-400 font-light leading-relaxed pl-3">
+                        <p className="text-xs text-neutral-500 font-light leading-relaxed pl-3">
                           Acquire the tools for global market and career readiness.
                         </p>
                       </div>
@@ -710,7 +710,7 @@ export default function Index() {
                           setActiveProgramIndex(index);
                         }
                       }}
-                      className="absolute top-1/2 left-1/2 w-[var(--program-card-width)] aspect-[4/5] md:aspect-[3/4] overflow-hidden rounded-[2.5rem] shadow-luxury cursor-pointer bg-white transition-all duration-700 border border-neutral-100 flex flex-col justify-between p-10 md:p-12 group hover:bg-black hover:text-white"
+                      className="absolute top-1/2 left-1/2 w-[var(--program-card-width)] aspect-[4/5] md:aspect-[3/4] overflow-hidden rounded-[2.5rem] shadow-luxury cursor-pointer bg-white transition-all duration-700 border border-neutral-100 flex flex-col justify-between p-10 md:p-12 group hover:border-gold hover:shadow-2xl hover:scale-[1.02]"
                     >
                       {/* Background Image overlay (visible on hover) */}
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 overflow-hidden rounded-[2.5rem]">
@@ -726,16 +726,16 @@ export default function Index() {
                           </div>
                           
                           {/* Title */}
-                          <h3 className="text-2xl md:text-3xl lg:text-4xl uppercase mb-6 font-display group-hover:italic transition-all duration-700 leading-tight text-black group-hover:text-white">
+                          <h3 className="text-2xl md:text-3xl lg:text-4xl uppercase mb-6 font-display group-hover:italic transition-all duration-700 leading-tight text-black group-hover:text-gold">
                             {prog.title}
                           </h3>
 
                           {/* Details */}
                           <ul className="space-y-4 mb-8">
-                            <li className="flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-neutral-500 group-hover:text-neutral-300">
+                            <li className="flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-neutral-500 group-hover:text-neutral-700">
                               <div className="h-1 w-1 rounded-full bg-gold" /> {prog.duration} Professional Training
                             </li>
-                            <li className="flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-neutral-500 group-hover:text-neutral-300">
+                            <li className="flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-neutral-500 group-hover:text-neutral-700">
                               <div className="h-1 w-1 rounded-full bg-gold" /> {prog.outcome}
                             </li>
                           </ul>
