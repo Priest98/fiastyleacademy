@@ -268,7 +268,7 @@ export default function Index() {
 
   const testimonials = [
     {
-      quote: "Oga thank u so much 😭🤭Omoh I don’t really know how to appreciate u ooo Walloy cox u did a lot for me😭may almighty Allah make every best things easy for u in every ways inshallah 🤲🫂you’re such a rare boss Walloy😔u took us as your sisters, playmate Walloy u did a lot for us may d almighty God reward nd protect u in every way🤲.",
+      quote: "Thank you so much! I really don't know how to appreciate you enough because you did so much for me. May Almighty Allah make everything easy for you in every way, Inshallah. You are such a rare boss—you treated us like family and supported us in every way. May Almighty God reward and protect you.",
       author: "Fatima Bello",
       role: "Elite Couture Graduate",
       location: "Ilorin",
