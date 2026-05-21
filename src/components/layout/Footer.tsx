@@ -9,18 +9,18 @@ export default function Footer() {
 
   return (
     <footer className="bg-neutral-50 text-black border-t border-black/5 relative overflow-hidden texture-grain">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 pt-24 pb-12">
-        <div className="grid gap-16 md:grid-cols-12 mb-20">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 pt-16 pb-10 md:pt-24 md:pb-12">
+        <div className="grid gap-10 md:gap-16 md:grid-cols-12 mb-12 md:mb-20">
           
           {/* Brand Column */}
-          <div className="md:col-span-6 space-y-8">
+          <div className="md:col-span-6 space-y-6 md:space-y-8">
             <Link to="/" className="font-display text-3xl tracking-tight text-black inline-block">
               FIATSTYLE<span className="text-gold font-light">ACADEMY</span>
             </Link>
             <p className="text-sm text-neutral-600 max-w-sm font-light leading-relaxed">
               An elite fashion training ground dedicated to restoring the dignity of craftsmanship. Empowering the next wave of global couture designers from Ilorin, Nigeria.
             </p>
-            <div className="flex gap-10 pt-4">
+            <div className="flex flex-wrap gap-6 sm:gap-10 pt-2 md:pt-4">
               {socials.map(s => (
                 <a 
                   key={s.name} 
@@ -40,9 +40,9 @@ export default function Footer() {
           </div>
 
           {/* Links Column 1 */}
-          <div className="md:col-span-3 space-y-6">
+          <div className="md:col-span-3 space-y-4 md:space-y-6">
             <h4 className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 font-semibold">Navigations</h4>
-            <ul className="space-y-4 text-[11px] uppercase tracking-[0.2em] font-light">
+            <ul className="space-y-3 md:space-y-4 text-[11px] uppercase tracking-[0.2em] font-light">
               <li>
                 <Link to="/about" className="text-neutral-800 hover:text-gold transition-colors duration-300 flex items-center gap-2 group">
                   <span className="h-[1px] w-0 bg-gold group-hover:w-3 transition-all duration-300" />
@@ -71,9 +71,9 @@ export default function Footer() {
           </div>
 
           {/* Links Column 2 */}
-          <div className="md:col-span-3 space-y-6">
+          <div className="md:col-span-3 space-y-4 md:space-y-6">
             <h4 className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 font-semibold">Admissions</h4>
-            <ul className="space-y-4 text-[11px] uppercase tracking-[0.2em] font-light">
+            <ul className="space-y-3 md:space-y-4 text-[11px] uppercase tracking-[0.2em] font-light">
               <li className="text-neutral-600 flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-gold/50" />
                 Ilorin, Nigeria

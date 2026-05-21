@@ -39,6 +39,31 @@ export default function Index() {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = (nextFn: () => void, prevFn: () => void) => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      nextFn();
+    } else if (isRightSwipe) {
+      prevFn();
+    }
+  };
+
   const graduates = [
     {
       image: cat1_5,
@@ -243,32 +268,25 @@ export default function Index() {
 
   const testimonials = [
     {
-      quote: "The technical depth is unmatched. I left with a runway-ready collection.",
-      author: "Olu Adeyemi",
-      role: "Creative Director",
-      location: "Lagos · '23",
-      avatar: "OA"
+      quote: "Oga thank u so much 😭🤭Omoh I don’t really know how to appreciate u ooo Walloy cox u did a lot for me😭may almighty Allah make every best things easy for u in every ways inshallah 🤲🫂you’re such a rare boss Walloy😔u took us as your sisters, playmate Walloy u did a lot for us may d almighty God reward nd protect u in every way🤲.",
+      author: "Fatima Bello",
+      role: "Elite Couture Graduate",
+      location: "Ilorin",
+      avatar: "FB"
     },
     {
-      quote: "Six months in and I had already secured my first global concept store listing.",
-      author: "Amina Kessler",
-      role: "Bespoke Designer",
-      location: "Berlin · '24",
-      avatar: "AK"
+      quote: "Good evening boss🤭I wanted to take a moment to express my sincere appreciation for your guidance and support. Your leadership has been instrumental in my growth and motivation at work. Thank you for always inspiring us to do our best.",
+      author: "Zainab Ibrahim",
+      role: "Pattern Engineering Graduate",
+      location: "Ilorin",
+      avatar: "ZI"
     },
     {
-      quote: "The textile module rewired how I source and see fabric. Simply game-changing.",
-      author: "Priya Shah",
-      role: "Couture Artisan",
-      location: "Mumbai · '24",
-      avatar: "PS"
-    },
-    {
-      quote: "Best money I've spent on my career. The mentors are world-class.",
-      author: "Mira Hoffman",
-      role: "Fashion Entrepreneur",
-      location: "NYC · '24",
-      avatar: "MH"
+      quote: "Good evening ma❤️ Thank u so much for your guidance and support, you are an amazing boss and mentor, thank u for believing in me. I appreciate the flexibility and encouragement you've shown me. Thanks for being a great leader. I love you so much ma 💓",
+      author: "Hadiza Yusuf",
+      role: "Bespoke Corsetry Graduate",
+      location: "Ilorin",
+      avatar: "HY"
     }
   ];
 
@@ -341,7 +359,7 @@ export default function Index() {
     <PublicLayout>
       <div ref={containerRef} className="relative">
         {/* HERO SECTION: Immersive & Bold */}
-        <section className="relative h-screen flex items-center overflow-hidden bg-black">
+        <section className="relative h-[85vh] md:h-screen flex items-center overflow-hidden bg-black">
           <motion.div 
             style={{ opacity: heroOpacity, scale: heroScale }}
             className="absolute inset-0 z-0"
@@ -349,34 +367,35 @@ export default function Index() {
             <img 
               src={homeHero} 
               alt="Fiatstyle Editorial" 
-              className="w-full h-full object-cover opacity-70 grayscale hover:grayscale-0 transition-all duration-[2000ms]" 
+              className="w-full h-full object-cover opacity-50 md:opacity-70 grayscale hover:grayscale-0 transition-all duration-[2000ms]" 
               loading="eager" 
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-black/45 z-[1] pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent z-[2]" />
           </motion.div>
 
           <div className="editorial-container relative z-10 w-full">
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
               className="max-w-4xl"
             >
-              <span className="label text-gold mb-6 block fade-up" style={{ animationDelay: '0.2s' }}>
+              <span className="label text-gold mb-3 md:mb-6 block fade-up" style={{ animationDelay: '0.2s' }}>
                 Fiatstyle Fashion Academy · 2026 Intake
               </span>
-              <h1 className="text-white text-balance mb-10 fade-up" style={{ animationDelay: '0.4s' }}>
+              <h1 className="text-white text-balance text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display leading-[1.15] mb-6 md:mb-10 fade-up" style={{ animationDelay: '0.4s' }}>
                 Master the Art of <br />
                 <span className="italic text-gold">High-End Couture</span>
               </h1>
-              <p className="text-white/70 text-lg md:text-xl font-light mb-12 max-w-xl fade-up" style={{ animationDelay: '0.6s' }}>
+              <p className="text-white/80 text-sm sm:text-base md:text-lg lg:text-xl font-light mb-8 md:mb-12 max-w-xl leading-relaxed fade-up" style={{ animationDelay: '0.6s' }}>
                 The definitive online academy for the next generation of global fashion designers. Transform your creative vision into a professional career in 90 days.
               </p>
-              <div className="flex flex-col sm:flex-row items-start gap-6 fade-up" style={{ animationDelay: '0.8s' }}>
-                <Link to="/enroll" className="btn-luxury-primary px-8 py-3.5 group">
+              <div className="flex flex-row items-center gap-4 fade-up" style={{ animationDelay: '0.8s' }}>
+                <Link to="/enroll" className="btn-luxury-primary px-5 sm:px-8 py-3.5 group text-[9px] sm:text-[10px] whitespace-nowrap">
                   Apply Now <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" />
                 </Link>
-                <Link to="/courses" className="btn-luxury-secondary text-white border-white/20 hover:border-white px-8 py-3.5">
+                <Link to="/courses" className="btn-luxury-secondary text-white border-white/20 hover:border-white px-5 sm:px-8 py-3.5 text-[9px] sm:text-[10px] whitespace-nowrap">
                   Explore Programs
                 </Link>
               </div>
@@ -397,8 +416,8 @@ export default function Index() {
         <section className="section-padding-lg bg-white overflow-hidden relative">
           <style dangerouslySetInnerHTML={{__html: `
             :root {
-              --carousel-card-width: 280px;
-              --carousel-gap: 16px;
+              --carousel-card-width: 310px;
+              --carousel-gap: 12px;
             }
             @media (min-width: 768px) {
               :root {
@@ -437,27 +456,14 @@ export default function Index() {
             <div className="w-full h-px bg-neutral-200 mb-12 md:mb-16" />
 
             {/* Carousel Container */}
-            <div className="relative h-[450px] md:h-[550px] lg:h-[650px] w-full flex items-center justify-center py-6">
-              {/* Left Arrow Button */}
-              <button 
-                onClick={prevSlide}
-                className="absolute left-0 lg:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/80 hover:bg-white border border-neutral-200 flex items-center justify-center text-black shadow-md hover:scale-105 active:scale-95 transition-all z-20 cursor-pointer"
-                aria-label="Previous slide"
-              >
-                <ChevronLeft className="h-6 w-6" />
-              </button>
-
-              {/* Right Arrow Button */}
-              <button 
-                onClick={nextSlide}
-                className="absolute right-0 lg:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/80 hover:bg-white border border-neutral-200 flex items-center justify-center text-black shadow-md hover:scale-105 active:scale-95 transition-all z-20 cursor-pointer"
-                aria-label="Next slide"
-              >
-                <ChevronRight className="h-6 w-6" />
-              </button>
-
+            <div 
+              className="relative h-[480px] md:h-[550px] lg:h-[650px] w-full flex flex-col md:flex-row items-center justify-center py-6 select-none"
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={() => onTouchEnd(nextSlide, prevSlide)}
+            >
               {/* Carousel Slides Track */}
-              <div className="relative w-full h-full overflow-visible">
+              <div className="relative w-full h-[400px] md:h-full overflow-visible">
                 {graduates.map((grad, index) => {
                   const diff = getDistance(index);
                   const isActive = diff === 0;
@@ -510,6 +516,24 @@ export default function Index() {
                   );
                 })}
               </div>
+
+              {/* Navigation Controls Row (below the track on mobile, floating on desktop) */}
+              <div className="flex md:absolute md:inset-x-0 md:top-1/2 md:-translate-y-1/2 md:justify-between items-center gap-6 mt-6 md:mt-0 z-20">
+                <button 
+                  onClick={prevSlide}
+                  className="w-12 h-12 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-black shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer md:ml-8"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </button>
+                <button 
+                  onClick={nextSlide}
+                  className="w-12 h-12 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-black shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer md:mr-8"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </button>
+              </div>
             </div>
 
             {/* Bottom slide indicators */}
@@ -547,9 +571,9 @@ export default function Index() {
               </FadeIn>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-stretch">
               <FadeIn direction="right" delay={0.2} className="h-full">
-                <div className="relative aspect-portrait overflow-hidden rounded-[2.5rem] shadow-luxury group h-full">
+                <div className="relative aspect-[4/3] sm:aspect-portrait overflow-hidden rounded-[2.5rem] shadow-luxury group h-full">
                   <img 
                     src={cat5_8} 
                     alt="Workshop" 
@@ -577,7 +601,7 @@ export default function Index() {
               </FadeIn>
 
               <FadeIn direction="left" delay={0.3}>
-                <div className="bg-white border border-black/5 rounded-[2.5rem] p-10 md:p-14 shadow-luxury flex flex-col justify-between h-full relative overflow-hidden">
+                <div className="bg-white border border-black/5 rounded-[2.5rem] p-6 sm:p-10 md:p-14 shadow-luxury flex flex-col justify-between h-full relative overflow-hidden">
                   <div className="mb-10">
                     <h3 className="text-2xl md:text-3xl font-display text-black mb-6">Fiatstyle Academy</h3>
                     <p className="text-neutral-700 text-base md:text-lg font-light leading-relaxed mb-6">
@@ -658,8 +682,8 @@ export default function Index() {
         <section className="section-padding-lg bg-neutral-50 overflow-hidden relative">
           <style dangerouslySetInnerHTML={{__html: `
             :root {
-              --program-card-width: 280px;
-              --program-gap: 16px;
+              --program-card-width: 310px;
+              --program-gap: 12px;
             }
             @media (min-width: 768px) {
               :root {
@@ -697,27 +721,14 @@ export default function Index() {
             <div className="w-full h-px bg-neutral-200 mb-12 md:mb-16" />
 
             {/* Carousel Container */}
-            <div className="relative h-[480px] md:h-[580px] lg:h-[680px] w-full flex items-center justify-center py-6">
-              {/* Left Arrow Button */}
-              <button 
-                onClick={prevProgram}
-                className="absolute left-0 lg:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/80 hover:bg-white border border-neutral-200 flex items-center justify-center text-black shadow-md hover:scale-105 active:scale-95 transition-all z-20 cursor-pointer"
-                aria-label="Previous program"
-              >
-                <ChevronLeft className="h-6 w-6" />
-              </button>
-
-              {/* Right Arrow Button */}
-              <button 
-                onClick={nextProgram}
-                className="absolute right-0 lg:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/80 hover:bg-white border border-neutral-200 flex items-center justify-center text-black shadow-md hover:scale-105 active:scale-95 transition-all z-20 cursor-pointer"
-                aria-label="Next program"
-              >
-                <ChevronRight className="h-6 w-6" />
-              </button>
-
+            <div 
+              className="relative h-[510px] md:h-[580px] lg:h-[680px] w-full flex flex-col md:flex-row items-center justify-center py-6 select-none"
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={() => onTouchEnd(nextProgram, prevProgram)}
+            >
               {/* Carousel Slides Track */}
-              <div className="relative w-full h-full overflow-visible">
+              <div className="relative w-full h-[430px] md:h-full overflow-visible">
                 {programs.map((prog, index) => {
                   const diff = getProgramDistance(index);
                   const isActive = diff === 0;
@@ -739,12 +750,12 @@ export default function Index() {
                            ];
                           const matchedCourse = courses.find(c => c.slug === slugs[index]);
                           if (matchedCourse) {
-                            setSelectedCourse(matchedCourse);
-                            setIsModalOpen(true);
+                             setSelectedCourse(matchedCourse);
+                             setIsModalOpen(true);
                           }
                         }
                       }}
-                      className="absolute top-1/2 left-1/2 w-[var(--program-card-width)] aspect-[4/5] md:aspect-[3/4] overflow-hidden rounded-[2.5rem] shadow-luxury cursor-pointer bg-white transition-all duration-700 border border-neutral-100 flex flex-col justify-between p-10 md:p-12 group hover:border-gold hover:shadow-2xl hover:scale-[1.02]"
+                      className="absolute top-1/2 left-1/2 w-[var(--program-card-width)] aspect-[4/5] md:aspect-[3/4] overflow-hidden rounded-[2.5rem] shadow-luxury cursor-pointer bg-white transition-all duration-700 border border-neutral-100 flex flex-col justify-between p-8 sm:p-10 md:p-12 group hover:border-gold hover:shadow-2xl hover:scale-[1.02]"
                     >
                       {/* Background Image overlay (visible on hover) */}
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 overflow-hidden rounded-[2.5rem]">
@@ -754,18 +765,18 @@ export default function Index() {
                       <div className="relative z-10 flex flex-col justify-between h-full w-full">
                         {/* Top: Level & Price */}
                         <div>
-                          <div className="flex justify-between items-start mb-8">
+                          <div className="flex justify-between items-start mb-6 md:mb-8">
                             <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 group-hover:text-neutral-400">{prog.level}</span>
                             <span className="font-mono text-sm text-gold font-semibold">{prog.price}</span>
                           </div>
                           
                           {/* Title */}
-                          <h3 className="text-2xl md:text-3xl lg:text-4xl uppercase mb-6 font-display group-hover:italic transition-all duration-700 leading-tight text-black group-hover:text-gold">
+                          <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl uppercase mb-4 md:mb-6 font-display group-hover:italic transition-all duration-700 leading-tight text-black group-hover:text-gold">
                             {prog.title}
                           </h3>
 
                           {/* Details */}
-                          <ul className="space-y-4 mb-8">
+                          <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8">
                             <li className="flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-neutral-500 group-hover:text-neutral-700">
                               <div className="h-1 w-1 rounded-full bg-gold" /> {prog.duration} Professional Training
                             </li>
@@ -803,6 +814,24 @@ export default function Index() {
                   );
                 })}
               </div>
+
+              {/* Navigation Controls Row (below the track on mobile, floating on desktop) */}
+              <div className="flex md:absolute md:inset-x-0 md:top-1/2 md:-translate-y-1/2 md:justify-between items-center gap-6 mt-6 md:mt-0 z-20">
+                <button 
+                  onClick={prevProgram}
+                  className="w-12 h-12 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-black shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer md:ml-8"
+                  aria-label="Previous program"
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </button>
+                <button 
+                  onClick={nextProgram}
+                  className="w-12 h-12 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-black shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer md:mr-8"
+                  aria-label="Next program"
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </button>
+              </div>
             </div>
 
             {/* Bottom slide indicators */}
@@ -819,17 +848,17 @@ export default function Index() {
           </div>
         </section>
 
-        {/* TESTIMONIALS: Stacked Deck Slider */}
+         {/* TESTIMONIALS: Stacked Deck Slider */}
         <section className="section-padding-lg bg-neutral-50 overflow-hidden relative border-y border-black/5">
           <style dangerouslySetInnerHTML={{__html: `
             :root {
-              --testimonial-card-width: 290px;
-              --testimonial-card-height: 230px;
+              --testimonial-card-width: 325px;
+              --testimonial-card-height: 380px;
             }
             @media (min-width: 640px) {
               :root {
                 --testimonial-card-width: 440px;
-                --testimonial-card-height: 240px;
+                --testimonial-card-height: 280px;
               }
             }
             @media (min-width: 768px) {
@@ -864,28 +893,14 @@ export default function Index() {
             </p>
 
             {/* Stack Slider Container */}
-            <div className="relative w-full h-[290px] sm:h-[310px] md:h-[350px] lg:h-[390px] flex items-center justify-center mb-16">
-              
-              {/* Left Floating Arrow Button */}
-              <button 
-                onClick={prevTestimonial}
-                className="absolute left-0 sm:left-4 md:left-12 lg:left-24 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-black shadow-md hover:scale-105 active:scale-95 transition-all z-40 cursor-pointer"
-                aria-label="Previous testimonial"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-
-              {/* Right Floating Arrow Button */}
-              <button 
-                onClick={nextTestimonial}
-                className="absolute right-0 sm:right-4 md:right-12 lg:right-24 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-black shadow-md hover:scale-105 active:scale-95 transition-all z-40 cursor-pointer"
-                aria-label="Next testimonial"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-
+            <div 
+              className="relative w-full h-[470px] md:h-[350px] lg:h-[390px] flex flex-col md:flex-row items-center justify-center py-6 select-none"
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={() => onTouchEnd(nextTestimonial, prevTestimonial)}
+            >
               {/* Cards Stack Track */}
-              <div className="relative w-[var(--testimonial-card-width)] h-[var(--testimonial-card-height)] overflow-visible">
+              <div className="relative w-[var(--testimonial-card-width)] h-[var(--testimonial-card-height)] overflow-visible mb-6 md:mb-0">
                 {testimonials.map((test, index) => {
                   const diff = getTestimonialDistance(index);
                   const isActive = diff === 0;
@@ -899,10 +914,10 @@ export default function Index() {
                           setActiveTestimonialIndex(index);
                         }
                       }}
-                      className="absolute top-1/2 left-1/2 w-full h-full bg-white rounded-3xl border border-neutral-200/80 shadow-luxury p-8 sm:p-10 md:p-12 flex flex-col justify-between text-left cursor-pointer group select-none"
+                      className="absolute top-1/2 left-1/2 w-full h-full bg-white rounded-3xl border border-neutral-200/80 shadow-luxury p-6 sm:p-10 md:p-12 flex flex-col justify-between text-left cursor-pointer group select-none"
                     >
                       {/* Quote text */}
-                      <p className="font-display text-base sm:text-lg md:text-xl lg:text-2xl text-black leading-relaxed mb-6 font-light">
+                      <p className="font-display text-sm sm:text-base md:text-xl lg:text-2xl text-black leading-relaxed mb-4 md:mb-6 font-light">
                         "{test.quote}"
                       </p>
 
@@ -924,6 +939,24 @@ export default function Index() {
                     </div>
                   );
                 })}
+              </div>
+
+              {/* Navigation Controls Row (below the track on mobile, floating on desktop) */}
+              <div className="flex md:absolute md:inset-x-0 md:top-1/2 md:-translate-y-1/2 md:justify-between items-center gap-6 mt-6 md:mt-0 z-40">
+                <button 
+                  onClick={prevTestimonial}
+                  className="w-12 h-12 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-black shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer md:ml-12 lg:ml-24"
+                  aria-label="Previous testimonial"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button 
+                  onClick={nextTestimonial}
+                  className="w-12 h-12 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-black shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer md:mr-12 lg:mr-24"
+                  aria-label="Next testimonial"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
               </div>
             </div>
 

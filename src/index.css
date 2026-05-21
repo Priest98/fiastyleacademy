@@ -240,8 +240,8 @@
   /* Editorial Layout Utilities */
   .aspect-portrait { aspect-ratio: 3/4; }
   .editorial-container { @apply max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20; }
-  .section-padding-lg { @apply py-32 md:py-48 lg:py-64; }
-  .section-padding-xl { @apply py-40 md:py-60 lg:py-80; }
+  .section-padding-lg { @apply py-16 md:py-48 lg:py-64; }
+  .section-padding-xl { @apply py-20 md:py-60 lg:py-80; }
   
   .text-balance { text-wrap: balance; }
   
