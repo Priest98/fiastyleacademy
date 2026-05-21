@@ -40,8 +40,9 @@ export default function CourseCard({ c }: { c: Course }) {
         onMouseLeave={() => setIsHovered(false)}
         onTap={() => setIsTapped((v) => !v)}
         onClick={() => {
-          if (isHovered) setIsModalOpen(true);
-          else if (isTapped) setIsModalOpen(true);
+          if (isHovered || isTapped) {
+            setIsModalOpen(true);
+          }
         }}
         whileHover={{ scale: 1.0 }}
       >
