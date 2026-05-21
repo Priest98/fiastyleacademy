@@ -64,7 +64,7 @@ export default function About() {
       <section className="editorial-container section-padding-lg text-center">
         <FadeIn>
           <h2 className="text-3xl md:text-5xl uppercase mb-12">Ready to define your signature?</h2>
-          <a href="/enroll" className="btn-luxury-primary px-20 py-8 inline-flex">
+          <a href="/enroll" className="btn-luxury-primary px-8 py-3.5 inline-flex">
             Step Into Couture
           </a>
         </FadeIn>

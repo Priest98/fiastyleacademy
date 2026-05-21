@@ -352,10 +352,10 @@ export default function Index() {
                 The definitive online academy for the next generation of global fashion designers. Transform your creative vision into a professional career in 90 days.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-6 fade-up" style={{ animationDelay: '0.8s' }}>
-                <a href="/enroll" className="btn-luxury-primary px-16 py-6 group">
+                <a href="/enroll" className="btn-luxury-primary px-8 py-3.5 group">
                   Apply Now <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" />
                 </a>
-                <a href="/courses" className="btn-luxury-secondary text-white border-white/20 hover:border-white px-16 py-6">
+                <a href="/courses" className="btn-luxury-secondary text-white border-white/20 hover:border-white px-8 py-3.5">
                   Explore Programs
                 </a>
               </div>
@@ -885,7 +885,7 @@ export default function Index() {
               </p>
               <a 
                 href="/enroll" 
-                className="btn-luxury-primary px-16 py-6 text-[10px] tracking-[0.3em] font-bold uppercase bg-black text-white hover:bg-neutral-900 transition-all rounded-full hover:scale-105 shadow-md"
+                className="btn-luxury-primary px-8 py-3.5 text-[10px] tracking-[0.3em] font-bold uppercase bg-black text-white hover:bg-neutral-900 transition-all rounded-full hover:scale-105 shadow-md"
               >
                 Explore Programs
               </a>
@@ -908,7 +908,7 @@ export default function Index() {
                 Join the elite cohort of designers redefining modern couture. Limited seats remaining for the 2026 intake.
               </p>
               <div className="flex flex-col items-center gap-8">
-                <a href="/enroll" className="btn-luxury-primary px-24 py-8 text-sm group hover:scale-105 transition-transform">
+                <a href="/enroll" className="btn-luxury-primary px-12 py-4 text-xs group hover:scale-105 transition-transform">
                   Apply Now — Secure Your Spot
                 </a>
                 <p className="label text-muted-foreground flex items-center gap-3">

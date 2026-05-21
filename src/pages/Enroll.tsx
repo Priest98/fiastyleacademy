@@ -227,7 +227,7 @@ export default function Enroll() {
                   <p className="label text-muted-foreground">Secure Online Payment</p>
                   <button 
                     onClick={handleFlutterwavePayment}
-                    className="btn-luxury-primary w-full py-5 text-[11px] tracking-[0.25em] font-bold bg-black text-white hover:bg-neutral-900 transition-all flex items-center justify-center gap-3 rounded-none shadow-soft"
+                    className="btn-luxury-primary w-full py-3.5 text-[11px] tracking-[0.25em] font-bold bg-black text-white hover:bg-neutral-900 transition-all flex items-center justify-center gap-3 rounded-none shadow-soft"
                   >
                     <CreditCard className="h-4 w-4" /> Pay with Flutterwave (₦{selectedProgram.priceVal.toLocaleString()})
                   </button>
@@ -246,7 +246,7 @@ export default function Enroll() {
                   Thank you for enrolling in our <strong>{selectedProgram.n}</strong>. A confirmation email has been sent to <strong>{formData.email}</strong> with details about your batch start date and onboarding schedule.
                 </p>
                 <div className="pt-4">
-                  <a href="/" className="btn-luxury-primary px-12 py-4 text-[10px] bg-black text-white rounded-none hover:bg-neutral-900 transition-colors uppercase tracking-[0.2em]">
+                  <a href="/" className="btn-luxury-primary px-8 py-3 text-[10px] bg-black text-white rounded-none hover:bg-neutral-900 transition-colors uppercase tracking-[0.2em]">
                     Return to Homepage
                   </a>
                 </div>
@@ -265,7 +265,7 @@ export default function Enroll() {
                 >
                   ← Previous
                 </button>
-                <button onClick={handleNextStep} className="btn-luxury-primary px-10 py-4 text-[10px]">
+                <button onClick={handleNextStep} className="btn-luxury-primary px-6 py-2.5 text-[10px]">
                   {step === 2 ? "Complete Registration" : "Next Step"}
                 </button>
               </div>

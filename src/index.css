@@ -220,7 +220,7 @@
     box-shadow: 0 0 20px rgba(200, 169, 106, 0.2);
   }
   .btn-luxury-primary {
-    @apply bg-gold text-white uppercase tracking-[0.4em] text-[10px] py-5 px-10 transition-all duration-300 rounded-[4px] shadow-gold flex items-center justify-center gap-2;
+    @apply bg-gold text-white uppercase tracking-[0.4em] text-[10px] py-3.5 px-6 transition-all duration-300 rounded-[4px] shadow-gold flex items-center justify-center gap-2;
   }
   .btn-luxury-primary:hover {
     @apply -translate-y-0.5 glow-gold brightness-110;
@@ -229,7 +229,7 @@
     @apply translate-y-0 scale-95;
   }
   .btn-luxury-secondary {
-    @apply border border-black/10 text-foreground uppercase tracking-[0.4em] text-[10px] py-5 px-10 transition-all duration-300 rounded-[4px] flex items-center justify-center gap-2;
+    @apply border border-black/10 text-foreground uppercase tracking-[0.4em] text-[10px] py-3.5 px-6 transition-all duration-300 rounded-[4px] flex items-center justify-center gap-2;
   }
   .btn-luxury-secondary:hover {
     @apply bg-black text-white border-black -translate-y-0.5;

@@ -104,7 +104,7 @@ export default function Courses() {
           </p>
           <motion.a
             href="/enroll"
-            className="inline-flex items-center gap-4 border border-white/30 rounded-full px-12 py-6 text-[12px] uppercase tracking-[0.25em] hover:bg-white hover:text-black transition-all duration-500"
+            className="inline-flex items-center gap-4 border border-white/30 rounded-full px-8 py-3.5 text-[10px] uppercase tracking-[0.25em] hover:bg-white hover:text-black transition-all duration-500"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
           >

@@ -54,7 +54,7 @@ export default function Contact() {
                   className="w-full bg-transparent border-b border-black/20 focus:border-black outline-none py-2 md:py-4 text-base md:text-lg font-light transition-all resize-none" 
                 />
               </div>
-              <button className="btn-luxury-primary px-16 py-6 w-full md:w-auto">
+              <button className="btn-luxury-primary px-8 py-3.5 w-full md:w-auto">
                 Request Admission
               </button>
             </motion.form>
