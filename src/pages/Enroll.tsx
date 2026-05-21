@@ -1,15 +1,19 @@
 import PublicLayout from "@/components/layout/PublicLayout";
 import { Check, CreditCard } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 
 const steps = ["Program", "Details", "Payment"];
 
 const programs = [
-  { n: "3 Month Intermediate Class", p: "₦100,000", priceVal: 100000 },
-  { n: "3 Month Advanced Class", p: "₦100,000", priceVal: 100000 },
+  { n: "Beginner to Advance Class", p: "₦350,000", priceVal: 350000 },
+  { n: "Intermediate to Advance Class", p: "₦250,000", priceVal: 250000 },
+  { n: "Intermediate Class", p: "₦120,000", priceVal: 120000 },
+  { n: "Advanced Class", p: "₦150,000", priceVal: 150000 },
   { n: "1 Month Corsetry Masterclass", p: "₦50,000", priceVal: 50000 }
 ];
+
+const FORM_FEE = 5000;
 
 export default function Enroll() {
   const [step, setStep] = useState(0);
@@ -20,12 +24,16 @@ export default function Enroll() {
 
   useEffect(() => {
     if (courseParam) {
-      if (courseParam === "intermediate-class") {
+      if (courseParam === "beginner-to-advance") {
         setSelectedProgramIndex(0);
-      } else if (courseParam === "advanced-class") {
+      } else if (courseParam === "intermediate-to-advance") {
         setSelectedProgramIndex(1);
-      } else if (courseParam === "corsetry-masterclass") {
+      } else if (courseParam === "intermediate-class") {
         setSelectedProgramIndex(2);
+      } else if (courseParam === "advanced-class") {
+        setSelectedProgramIndex(3);
+      } else if (courseParam === "corsetry-masterclass") {
+        setSelectedProgramIndex(4);
       }
     }
   }, [courseParam]);
@@ -41,6 +49,8 @@ export default function Enroll() {
   const selectedProgram = programs[selectedProgramIndex];
 
   const getWhatsappLink = (method: 'flutterwave' | 'bank_transfer') => {
+    const tuition = programs[selectedProgramIndex].priceVal;
+    const total = tuition + FORM_FEE;
     const message = method === 'flutterwave' 
       ? `Hello Fiatstyle Academy,
 
@@ -48,14 +58,18 @@ I have successfully made an online payment via Flutterwave for:
 • Name: ${formData.firstName.trim()} ${formData.lastName.trim()}
 • Email: ${formData.email.trim()}
 • Program: ${programs[selectedProgramIndex].n}
-• Amount: ${programs[selectedProgramIndex].p}`
+• Tuition: ₦${tuition.toLocaleString()}
+• Form Fee: ₦${FORM_FEE.toLocaleString()}
+• Total Paid: ₦${total.toLocaleString()}`
       : `Hello Fiatstyle Academy,
 
 I have completed a manual Bank Transfer for my enrollment:
 • Name: ${formData.firstName.trim()} ${formData.lastName.trim()}
 • Email: ${formData.email.trim()}
 • Program: ${programs[selectedProgramIndex].n}
-• Amount: ${programs[selectedProgramIndex].p}
+• Tuition: ₦${tuition.toLocaleString()}
+• Form Fee: ₦${FORM_FEE.toLocaleString()}
+• Total Amount: ₦${total.toLocaleString()}
 
 I am sending my payment receipt for manual verification.`;
 
@@ -90,7 +104,7 @@ I am sending my payment receipt for manual verification.`;
     const flutterwaveConfig = {
       public_key: pubKey,
       tx_ref: `FS-${Date.now()}`,
-      amount: selectedProgram.priceVal,
+      amount: selectedProgram.priceVal + FORM_FEE,
       currency: "NGN",
       payment_options: "card, banktransfer, ussd",
       customer: {
@@ -100,7 +114,7 @@ I am sending my payment receipt for manual verification.`;
       },
       customizations: {
         title: "Fiatstyle Fashion Academy",
-        description: `Enrollment fee for ${selectedProgram.n}`,
+        description: `Enrollment & Form Fee for ${selectedProgram.n}`,
         logo: "https://fiatstyleacademy.com/logo.png",
       },
       callback: (data: any) => {
@@ -284,7 +298,7 @@ I am sending my payment receipt for manual verification.`;
                     onClick={handleFlutterwavePayment}
                     className="btn-luxury-primary w-full py-3.5 text-[11px] tracking-[0.25em] font-bold bg-black text-white hover:bg-neutral-900 transition-all flex items-center justify-center gap-3 rounded-none shadow-soft"
                   >
-                    <CreditCard className="h-4 w-4" /> Pay with Flutterwave (₦{selectedProgram.priceVal.toLocaleString()})
+                    <CreditCard className="h-4 w-4" /> Pay with Flutterwave (₦{(selectedProgram.priceVal + FORM_FEE).toLocaleString()})
                   </button>
                 </div>
               </div>
@@ -354,12 +368,13 @@ I am sending my payment receipt for manual verification.`;
             <aside className="rounded-xl border border-black/5 p-8 bg-neutral-50 h-max shadow-luxury">
               <p className="label text-muted-foreground">Application Details</p>
               <div className="mt-4 space-y-3 text-sm">
-                <Row l={selectedProgram.n} v={selectedProgram.p} />
+                <Row l="Tuition Fee" v={selectedProgram.p} />
+                <Row l="Admission Form" v="₦5,000" />
                 <Row l="Tax / Fees" v="Included" />
               </div>
               <div className="mt-8 pt-8 border-t border-black/5 flex justify-between items-end">
                 <span className="label">Total</span>
-                <span className="font-display text-4xl">{selectedProgram.p}</span>
+                <span className="font-display text-4xl">₦{(selectedProgram.priceVal + FORM_FEE).toLocaleString()}</span>
               </div>
               <ul className="mt-10 space-y-4 text-[10px] text-muted-foreground uppercase tracking-widest font-medium">
                 {["Secure SSL Payment", "Lifetime Alumni Group", "2026 Batch Enrollment", "Join 1,000+ Successful Alumni"].map(x => (

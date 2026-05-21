@@ -148,11 +148,27 @@ export default function Index() {
   const programs = [
     {
       image: cat1_1,
+      title: "Beginner to Advance",
+      duration: "180 Days",
+      level: "Level 01-03",
+      outcome: "Full Professional Designer",
+      price: "₦350,000"
+    },
+    {
+      image: cat1_5,
+      title: "Intermediate to Advance",
+      duration: "150 Days",
+      level: "Level 02-03",
+      outcome: "Bridge to Haute Couture",
+      price: "₦250,000"
+    },
+    {
+      image: cat1_12,
       title: "Intermediate",
       duration: "90 Days",
       level: "Level 01",
       outcome: "Professional Foundation",
-      price: "₦100,000"
+      price: "₦120,000"
     },
     {
       image: cat2_2,
@@ -160,7 +176,7 @@ export default function Index() {
       duration: "90 Days",
       level: "Level 02",
       outcome: "Master Tailoring",
-      price: "₦100,000"
+      price: "₦150,000"
     },
     {
       image: cat3_1,
@@ -714,7 +730,13 @@ export default function Index() {
                         if (diff !== 0) {
                           setActiveProgramIndex(index);
                         } else {
-                          const slugs = ["intermediate-class", "advanced-class", "corsetry-masterclass"];
+                          const slugs = [
+                             "beginner-to-advance",
+                             "intermediate-to-advance",
+                             "intermediate-class",
+                             "advanced-class",
+                             "corsetry-masterclass"
+                           ];
                           const matchedCourse = courses.find(c => c.slug === slugs[index]);
                           if (matchedCourse) {
                             setSelectedCourse(matchedCourse);
@@ -758,7 +780,13 @@ export default function Index() {
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
-                              const slugs = ["intermediate-class", "advanced-class", "corsetry-masterclass"];
+                              const slugs = [
+                                 "beginner-to-advance",
+                                 "intermediate-to-advance",
+                                 "intermediate-class",
+                                 "advanced-class",
+                                 "corsetry-masterclass"
+                               ];
                               const matchedCourse = courses.find(c => c.slug === slugs[index]);
                               if (matchedCourse) {
                                 setSelectedCourse(matchedCourse);
