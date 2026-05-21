@@ -3,6 +3,8 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { ArrowRight, Check, Star, Quote, Scissors, Eye, Award, Globe, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, useState } from "react";
 import FadeIn from "@/components/animations/FadeIn";
+import CourseModal from "@/components/marketing/CourseModal";
+import { courses } from "@/data/courses";
 import homeHero from "@/assets/new/homepage/home1.jpg";
 import cat1_1 from "@/assets/new/category1/cat1-1.jpg";
 import cat1_2 from "@/assets/new/category1/cat1-2.jpg";
@@ -139,6 +141,8 @@ export default function Index() {
   };
 
   const [activeProgramIndex, setActiveProgramIndex] = useState(0);
+  const [selectedCourse, setSelectedCourse] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const programs = [
     {
@@ -708,6 +712,13 @@ export default function Index() {
                       onClick={() => {
                         if (diff !== 0) {
                           setActiveProgramIndex(index);
+                        } else {
+                          const slugs = ["intermediate-class", "advanced-class", "corsetry-masterclass"];
+                          const matchedCourse = courses.find(c => c.slug === slugs[index]);
+                          if (matchedCourse) {
+                            setSelectedCourse(matchedCourse);
+                            setIsModalOpen(true);
+                          }
                         }
                       }}
                       className="absolute top-1/2 left-1/2 w-[var(--program-card-width)] aspect-[4/5] md:aspect-[3/4] overflow-hidden rounded-[2.5rem] shadow-luxury cursor-pointer bg-white transition-all duration-700 border border-neutral-100 flex flex-col justify-between p-10 md:p-12 group hover:border-gold hover:shadow-2xl hover:scale-[1.02]"
@@ -743,11 +754,20 @@ export default function Index() {
 
                         {/* Bottom Link CTA */}
                         <div>
-                          <span 
-                            className="inline-flex items-center gap-4 text-[10px] uppercase tracking-[0.4em] font-bold border-b border-black/10 group-hover:border-gold pb-2 transition-all text-black group-hover:text-gold"
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              const slugs = ["intermediate-class", "advanced-class", "corsetry-masterclass"];
+                              const matchedCourse = courses.find(c => c.slug === slugs[index]);
+                              if (matchedCourse) {
+                                setSelectedCourse(matchedCourse);
+                                setIsModalOpen(true);
+                              }
+                            }}
+                            className="inline-flex items-center gap-4 text-[10px] uppercase tracking-[0.4em] font-bold border-b border-black/10 group-hover:border-gold pb-2 transition-all text-black group-hover:text-gold bg-transparent border-0 outline-none cursor-pointer p-0"
                           >
                             Enquire <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-2" />
-                          </span>
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -920,6 +940,14 @@ export default function Index() {
           </div>
         </section>
       </div>
+
+      {selectedCourse && (
+        <CourseModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          course={selectedCourse}
+        />
+      )}
     </PublicLayout>
   );
 }
