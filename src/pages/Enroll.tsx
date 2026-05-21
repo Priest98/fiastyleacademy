@@ -14,6 +14,7 @@ const programs = [
 export default function Enroll() {
   const [step, setStep] = useState(0);
   const [selectedProgramIndex, setSelectedProgramIndex] = useState(0);
+  const [paymentMethod, setPaymentMethod] = useState<'flutterwave' | 'bank_transfer' | null>(null);
   const [searchParams] = useSearchParams();
   const courseParam = searchParams.get("course");
 
@@ -38,6 +39,28 @@ export default function Enroll() {
   });
 
   const selectedProgram = programs[selectedProgramIndex];
+
+  const getWhatsappLink = (method: 'flutterwave' | 'bank_transfer') => {
+    const message = method === 'flutterwave' 
+      ? `Hello Fiatstyle Academy,
+
+I have successfully made an online payment via Flutterwave for:
+• Name: ${formData.firstName.trim()} ${formData.lastName.trim()}
+• Email: ${formData.email.trim()}
+• Program: ${programs[selectedProgramIndex].n}
+• Amount: ${programs[selectedProgramIndex].p}`
+      : `Hello Fiatstyle Academy,
+
+I have completed a manual Bank Transfer for my enrollment:
+• Name: ${formData.firstName.trim()} ${formData.lastName.trim()}
+• Email: ${formData.email.trim()}
+• Program: ${programs[selectedProgramIndex].n}
+• Amount: ${programs[selectedProgramIndex].p}
+
+I am sending my payment receipt for manual verification.`;
+
+    return `https://wa.me/2348105073034?text=${encodeURIComponent(message)}`;
+  };
 
   const handleNextStep = () => {
     if (step === 0) {
@@ -83,7 +106,9 @@ export default function Enroll() {
       callback: (data: any) => {
         console.log("Payment response:", data);
         if (data.status === "successful" || data.status === "completed") {
+          setPaymentMethod('flutterwave');
           setStep(3); // Success Screen
+          window.open(getWhatsappLink('flutterwave'), "_blank");
         } else {
           alert("Payment was not successful. Please try again.");
         }
@@ -231,13 +256,25 @@ export default function Enroll() {
                 <h2 className="font-display text-xl md:text-2xl">Payment Selection</h2>
                 
                 {/* Bank Transfer Box */}
-                <div className="rounded-xl border border-black/5 p-8 bg-neutral-50 shadow-soft">
-                  <p className="label text-muted-foreground">Bank Transfer (Manual verification)</p>
-                  <p className="mt-2 font-display text-lg text-black">Guaranty Trust Bank</p>
-                  <p className="font-mono text-sm tracking-widest mt-1 text-neutral-800">0123456789 · Fiatstyle Academy</p>
-                  <p className="text-[10px] text-muted-foreground uppercase tracking-widest mt-4">
-                    Send proof of payment to admissions@fiatstyleacademy.com
-                  </p>
+                <div className="rounded-xl border border-black/5 p-8 bg-neutral-50 shadow-soft space-y-4">
+                  <div>
+                    <p className="label text-muted-foreground">Bank Transfer (Manual verification)</p>
+                    <p className="mt-2 font-display text-lg text-black">Guaranty Trust Bank</p>
+                    <p className="font-mono text-sm tracking-widest mt-1 text-neutral-800">0123456789 · Fiatstyle Academy</p>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest mt-4">
+                      Send proof of payment to admissions@fiatstyleacademy.com
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setPaymentMethod('bank_transfer');
+                      setStep(3);
+                      window.open(getWhatsappLink('bank_transfer'), "_blank");
+                    }}
+                    className="w-full py-3 text-[10px] uppercase tracking-[0.2em] font-bold bg-neutral-900 text-white hover:bg-neutral-800 transition-all flex items-center justify-center gap-2"
+                  >
+                    I've Made The Transfer (Send Receipt)
+                  </button>
                 </div>
 
                 {/* Online secure gateway payment options */}
@@ -259,12 +296,32 @@ export default function Enroll() {
                 <div className="h-16 w-16 bg-gold/10 text-gold rounded-full flex items-center justify-center mx-auto shadow-soft">
                   <Check className="h-8 w-8" />
                 </div>
-                <h2 className="font-display text-2xl md:text-3xl uppercase tracking-tight">Enrollment Confirmed!</h2>
-                <p className="text-muted-foreground max-w-md mx-auto text-sm leading-relaxed font-light">
-                  Thank you for enrolling in our <strong>{selectedProgram.n}</strong>. A confirmation email has been sent to <strong>{formData.email}</strong> with details about your batch start date and onboarding schedule.
-                </p>
-                <div className="pt-4">
-                  <Link to="/" className="btn-luxury-primary px-8 py-3 text-[10px] bg-black text-white rounded-none hover:bg-neutral-900 transition-colors uppercase tracking-[0.2em]">
+                <h2 className="font-display text-2xl md:text-3xl uppercase tracking-tight">
+                  {paymentMethod === 'bank_transfer' ? "Admission Requested!" : "Enrollment Confirmed!"}
+                </h2>
+                
+                {paymentMethod === 'bank_transfer' ? (
+                  <p className="text-muted-foreground max-w-md mx-auto text-sm leading-relaxed font-light">
+                    Thank you, <strong>{formData.firstName}</strong>. We have received your admission request for the <strong>{selectedProgram.n}</strong>. Please send your bank transfer proof/receipt to verify your payment and finalize your enrollment.
+                  </p>
+                ) : (
+                  <p className="text-muted-foreground max-w-md mx-auto text-sm leading-relaxed font-light">
+                    Thank you for enrolling in our <strong>{selectedProgram.n}</strong>. A confirmation email has been sent to <strong>{formData.email}</strong>. We have automatically opened WhatsApp so you can connect with us directly.
+                  </p>
+                )}
+
+                <div className="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
+                  {paymentMethod && (
+                    <a 
+                      href={getWhatsappLink(paymentMethod)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-luxury-primary px-8 py-3 text-[10px] bg-green-600 text-white rounded-none hover:bg-green-700 transition-colors uppercase tracking-[0.2em] flex items-center gap-2 border-none"
+                    >
+                      {paymentMethod === 'bank_transfer' ? "Send Receipt via WhatsApp" : "Open WhatsApp"}
+                    </a>
+                  )}
+                  <Link to="/" className="btn-luxury-primary px-8 py-3 text-[10px] bg-black text-white rounded-none hover:bg-neutral-900 transition-colors uppercase tracking-[0.2em] border-none">
                     Return to Homepage
                   </Link>
                 </div>
@@ -283,9 +340,11 @@ export default function Enroll() {
                 >
                   ← Previous
                 </button>
-                <button onClick={handleNextStep} className="btn-luxury-primary px-6 py-2.5 text-[10px]">
-                  {step === 2 ? "Complete Registration" : "Next Step"}
-                </button>
+                {step < 2 && (
+                  <button onClick={handleNextStep} className="btn-luxury-primary px-6 py-2.5 text-[10px]">
+                    Next Step
+                  </button>
+                )}
               </div>
             )}
           </div>
