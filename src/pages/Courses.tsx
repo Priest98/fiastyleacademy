@@ -1,9 +1,12 @@
 import PublicLayout from "@/components/layout/PublicLayout";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import CourseCard from "@/components/marketing/CourseCard";
 import { courses } from "@/data/courses";
 import { useState } from "react";
 import FadeIn from "@/components/animations/FadeIn";
+
+const MotionLink = motion(Link);
 
 const filters = ["All", "Professional", "Masterclass"];
 
@@ -102,14 +105,14 @@ export default function Courses() {
           <p className="text-neutral-500 font-light max-w-md mx-auto mb-16 leading-loose">
             Limited seats available for our next cohort. Secure your place today.
           </p>
-          <motion.a
-            href="/enroll"
+          <MotionLink
+            to="/enroll"
             className="inline-flex items-center gap-4 border border-black/20 rounded-full px-8 py-3.5 text-[10px] uppercase tracking-[0.25em] hover:bg-black hover:text-white transition-all duration-500"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
           >
             Apply Now →
-          </motion.a>
+          </MotionLink>
         </FadeIn>
       </section>
     </PublicLayout>

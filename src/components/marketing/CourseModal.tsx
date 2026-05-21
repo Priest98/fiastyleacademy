@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight, Check } from "lucide-react";
+import { Link } from "react-router-dom";
 import type { Course } from "./CourseCard";
 
 interface CourseModalProps {
@@ -89,13 +90,13 @@ export default function CourseModal({ isOpen, onClose, course }: CourseModalProp
               </div>
 
               <div className="mt-16 pt-12 border-t border-neutral-100">
-                <a 
-                  href="/enroll" 
+                <Link 
+                  to={`/enroll?course=${course.slug}`} 
                   className="btn-luxury-primary w-full py-8 text-center flex items-center justify-center gap-4 group"
                 >
                   Apply Now
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform" />
-                </a>
+                </Link>
               </div>
             </div>
           </motion.div>

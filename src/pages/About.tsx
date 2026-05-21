@@ -1,6 +1,7 @@
 import PublicLayout from "@/components/layout/PublicLayout";
 import aboutImage from "@/assets/new/category1/cat1-5.jpg";
 import FadeIn from "@/components/animations/FadeIn";
+import { Link } from "react-router-dom";
 
 export default function About() {
   return (
@@ -64,9 +65,9 @@ export default function About() {
       <section className="editorial-container section-padding-lg text-center">
         <FadeIn>
           <h2 className="text-3xl md:text-5xl uppercase mb-12">Ready to define your signature?</h2>
-          <a href="/enroll" className="btn-luxury-primary px-8 py-3.5 inline-flex">
+          <Link to="/enroll" className="btn-luxury-primary px-8 py-3.5 inline-flex">
             Step Into Couture
-          </a>
+          </Link>
         </FadeIn>
       </section>
     </PublicLayout>

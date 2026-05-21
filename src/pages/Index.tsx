@@ -2,6 +2,7 @@ import PublicLayout from "@/components/layout/PublicLayout";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check, Star, Quote, Scissors, Eye, Award, Globe, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import FadeIn from "@/components/animations/FadeIn";
 import CourseModal from "@/components/marketing/CourseModal";
 import { courses } from "@/data/courses";
@@ -356,12 +357,12 @@ export default function Index() {
                 The definitive online academy for the next generation of global fashion designers. Transform your creative vision into a professional career in 90 days.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-6 fade-up" style={{ animationDelay: '0.8s' }}>
-                <a href="/enroll" className="btn-luxury-primary px-8 py-3.5 group">
+                <Link to="/enroll" className="btn-luxury-primary px-8 py-3.5 group">
                   Apply Now <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" />
-                </a>
-                <a href="/courses" className="btn-luxury-secondary text-white border-white/20 hover:border-white px-8 py-3.5">
+                </Link>
+                <Link to="/courses" className="btn-luxury-secondary text-white border-white/20 hover:border-white px-8 py-3.5">
                   Explore Programs
-                </a>
+                </Link>
               </div>
             </motion.div>
           </div>
@@ -903,12 +904,12 @@ export default function Index() {
               <p className="text-xs md:text-sm uppercase tracking-[0.25em] text-neutral-400 font-light font-mono">
                 Join 500+ alumni who have launched their fashion labels globally.
               </p>
-              <a 
-                href="/enroll" 
+              <Link 
+                to="/enroll" 
                 className="btn-luxury-primary px-8 py-3.5 text-[10px] tracking-[0.3em] font-bold uppercase bg-black text-white hover:bg-neutral-900 transition-all rounded-full hover:scale-105 shadow-md"
               >
                 Explore Programs
-              </a>
+              </Link>
             </div>
           </div>
         </section>
@@ -928,9 +929,9 @@ export default function Index() {
                 Join the elite cohort of designers redefining modern couture. Limited seats remaining for the 2026 intake.
               </p>
               <div className="flex flex-col items-center gap-8">
-                <a href="/enroll" className="btn-luxury-primary px-12 py-4 text-xs group hover:scale-105 transition-transform">
+                <Link to="/enroll" className="btn-luxury-primary px-12 py-4 text-xs group hover:scale-105 transition-transform">
                   Apply Now — Secure Your Spot
-                </a>
+                </Link>
                 <p className="label text-muted-foreground flex items-center gap-3">
                   <span className="h-1.5 w-1.5 rounded-full bg-gold animate-ping" />
                   Only 4 Slots Remaining for May

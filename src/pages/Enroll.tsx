@@ -1,6 +1,7 @@
 import PublicLayout from "@/components/layout/PublicLayout";
 import { Check, CreditCard } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const steps = ["Program", "Details", "Payment"];
 
@@ -13,6 +14,20 @@ const programs = [
 export default function Enroll() {
   const [step, setStep] = useState(0);
   const [selectedProgramIndex, setSelectedProgramIndex] = useState(0);
+  const [searchParams] = useSearchParams();
+  const courseParam = searchParams.get("course");
+
+  useEffect(() => {
+    if (courseParam) {
+      if (courseParam === "intermediate-class") {
+        setSelectedProgramIndex(0);
+      } else if (courseParam === "advanced-class") {
+        setSelectedProgramIndex(1);
+      } else if (courseParam === "corsetry-masterclass") {
+        setSelectedProgramIndex(2);
+      }
+    }
+  }, [courseParam]);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -45,9 +60,12 @@ export default function Enroll() {
       return;
     }
 
+    const pubKey = (import.meta.env.VITE_FLUTTERWAVE_PUBLIC_KEY as string) || "FLWPUBK_TEST-e0fa65d958561ea9082ef850406ef5a6-X";
+    console.log("Initializing Flutterwave payment with Public Key:", pubKey);
+
     // Dynamic config for Flutterwave Checkout standard popup
     const flutterwaveConfig = {
-      public_key: (import.meta.env.VITE_FLUTTERWAVE_PUBLIC_KEY as string) || "FLWPUBK_TEST-e0fa65d958561ea9082ef850406ef5a6-X",
+      public_key: pubKey,
       tx_ref: `FS-${Date.now()}`,
       amount: selectedProgram.priceVal,
       currency: "NGN",
@@ -246,9 +264,9 @@ export default function Enroll() {
                   Thank you for enrolling in our <strong>{selectedProgram.n}</strong>. A confirmation email has been sent to <strong>{formData.email}</strong> with details about your batch start date and onboarding schedule.
                 </p>
                 <div className="pt-4">
-                  <a href="/" className="btn-luxury-primary px-8 py-3 text-[10px] bg-black text-white rounded-none hover:bg-neutral-900 transition-colors uppercase tracking-[0.2em]">
+                  <Link to="/" className="btn-luxury-primary px-8 py-3 text-[10px] bg-black text-white rounded-none hover:bg-neutral-900 transition-colors uppercase tracking-[0.2em]">
                     Return to Homepage
-                  </a>
+                  </Link>
                 </div>
               </div>
             )}
