@@ -287,6 +287,76 @@ export default function Index() {
       role: "Bespoke Corsetry Graduate",
       location: "Ilorin",
       avatar: "HY"
+    },
+    {
+      quote: "Good morning boss, I just wanted to say a big thank you for yesterday. You are not just a boss but a mother figure to us all. The patience you showed when teaching us corsetry is something I will never forget. May Allah reward your efforts abundantly and keep elevating Fiatstyle.",
+      author: "Amina Yusuf",
+      role: "Advanced Corsetry Graduate",
+      location: "Abuja",
+      avatar: "AY"
+    },
+    {
+      quote: "I want to appreciate you ma for being a wonderful mentor. Your correcting my seams over and over made me perfect my craft. I'm so proud to have learned under you. May God continue to protect and bless your family in every way possible.",
+      author: "Blessing Okoye",
+      role: "Bridal Couture Specialist",
+      location: "Lagos",
+      avatar: "BO"
+    },
+    {
+      quote: "Honestly, coming to this academy is the best decision I made this year. Thank you for pushing me to my limits even when I wanted to give up on draping. You saw the potential in me before I saw it myself. Thank you so much boss, God bless you ma.",
+      author: "Rukayat Alabi",
+      role: "Creative Fashion Alumni",
+      location: "Ilorin",
+      avatar: "RA"
+    },
+    {
+      quote: "Good evening ma. I just want to thank you for your kind words and advice during the project week. You made us feel so comfortable and welcome. May Almighty Allah bless your business, grant you long life, and keep rewarding you for your kind heart.",
+      author: "Aishat Dahiru",
+      role: "Pattern Drafting Student",
+      location: "Kaduna",
+      avatar: "AD"
+    },
+    {
+      quote: "Oga thank you for the wonderful lecture on finishing techniques. Your attention to detail is out of this world! You make complex tailoring look so easy. I am super grateful for the opportunity to learn from the very best in the industry.",
+      author: "Chinedu Okafor",
+      role: "Menswear Tailoring Alumni",
+      location: "Enugu",
+      avatar: "CO"
+    },
+    {
+      quote: "Hello ma, I am writing to express my deepest gratitude. You went above and beyond to support me during my final project collection presentation. Your leadership is truly inspiring, and I pray that God blesses you with sound health and unending joy.",
+      author: "Toke Adesina",
+      role: "Ready-to-Wear Graduate",
+      location: "Ibadan",
+      avatar: "TA"
+    },
+    {
+      quote: "Thank you so much ma for believing in my designs. Your feedback was the turning point for my collection. You teach with so much passion and love. May Allah always guide your path, open new doors of success for Fiatstyle, and protect you always.",
+      author: "Mariam Usman",
+      role: "Artisan Textile Designer",
+      location: "Ilorin",
+      avatar: "MU"
+    },
+    {
+      quote: "Good evening boss. I really appreciate your patience with me when I struggled with pattern manipulation. You are indeed a rare gem and an amazing leader. May Almighty God continue to shower His blessings on you and elevate you to higher heights.",
+      author: "Kemi Balogun",
+      role: "Pattern Engineering Alumni",
+      location: "Lagos",
+      avatar: "KB"
+    },
+    {
+      quote: "Words are not enough to thank you ma. Your academy has completely transformed my perspective on high fashion and couture. Thank you for setting such a high standard of excellence for us. May God reward you beautifully for your guidance.",
+      author: "Funmi Adebayo",
+      role: "Avant-Garde Designer",
+      location: "Ibadan",
+      avatar: "FA"
+    },
+    {
+      quote: "Alhamdulillah for the day I registered here. Thank you boss for pushing us to do our absolute best and for being a shoulder to lean on during the intensive training weeks. May Almighty Allah bless and keep you in His perfect peace.",
+      author: "Halima Sani",
+      role: "Traditional Wear Specialist",
+      location: "Kano",
+      avatar: "HS"
     }
   ];
 
@@ -308,7 +378,6 @@ export default function Index() {
 
   const getTestimonialCardStyle = (index: number) => {
     const diff = getTestimonialDistance(index);
-    const absDiff = Math.abs(diff);
     
     let scale = 0.9;
     let opacity = 0;
@@ -324,14 +393,14 @@ export default function Index() {
       rotate = 0;
       translateY = 0;
       translateX = 0;
-    } else if (diff === 1 || (diff === -3 && testimonials.length === 4)) {
+    } else if (diff === 1) {
       scale = 0.98;
       opacity = 0.9;
       zIndex = 20;
       rotate = -2;
       translateY = 8;
       translateX = 4;
-    } else if (diff === 2 || diff === -2) {
+    } else if (diff === 2) {
       scale = 0.95;
       opacity = 0.8;
       zIndex = 10;
