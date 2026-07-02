@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import IslandHeader from "./IslandHeader";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 export default function PublicLayout({ children }: { children: ReactNode }) {
   return (
@@ -11,9 +12,9 @@ export default function PublicLayout({ children }: { children: ReactNode }) {
       
       {/* Sticky Mobile CTA */}
       <div className="fixed bottom-6 left-0 right-0 z-50 px-6 md:hidden">
-        <a href="/enroll" className="w-full btn-luxury-primary py-5 shadow-2xl flex items-center justify-center gap-3 backdrop-blur-md bg-black/90 border border-gold/20">
+        <Link to="/enroll" className="w-full btn-luxury-primary py-5 shadow-2xl flex items-center justify-center gap-3 backdrop-blur-md bg-black/90 border border-gold/20">
           Apply Now — 2026 Intake
-        </a>
+        </Link>
       </div>
     </div>
   );

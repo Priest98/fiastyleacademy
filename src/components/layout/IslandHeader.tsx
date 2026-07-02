@@ -34,6 +34,8 @@ export default function IslandHeader() {
     lastScrollY.current = latest;
   });
 
+  const isDarkThemeNeeded = !scrolled && location.pathname === "/";
+
   return (
     <motion.header 
       initial={{ y: -100, opacity: 0 }}
@@ -45,14 +47,16 @@ export default function IslandHeader() {
       className="fixed top-0 left-0 right-0 z-50 px-2 py-4 md:px-8 md:py-8 pointer-events-none"
     >
       <div 
-        className={`max-w-7xl mx-auto flex items-center justify-between transition-all duration-700 ease-[0.22,1,0.36,1] px-4 md:px-6 py-3 md:py-4 rounded-full pointer-events-auto border border-black/5 ${
+        className={`max-w-7xl mx-auto flex items-center justify-between transition-all duration-700 ease-[0.22,1,0.36,1] px-4 md:px-6 py-3 md:py-4 rounded-full pointer-events-auto ${
           scrolled 
-            ? "bg-white/85 backdrop-blur-xl shadow-luxury md:scale-95" 
-            : "bg-transparent border-transparent scale-100"
+            ? "bg-white/85 backdrop-blur-xl shadow-luxury md:scale-95 border border-black/5" 
+            : isDarkThemeNeeded
+              ? "bg-transparent border border-white/10 scale-100"
+              : "bg-transparent border border-transparent scale-100"
         }`}
       >
         <Link to="/" className="font-display text-lg md:text-2xl tracking-tighter flex items-center gap-2 group">
-          <span className="text-foreground transition-colors group-hover:text-gold">FIATSTYLE</span>
+          <span className={`transition-colors group-hover:text-gold ${isDarkThemeNeeded ? "text-white" : "text-foreground"}`}>FIATSTYLE</span>
           <span className="text-gold font-light hidden sm:inline">ACADEMY</span>
         </Link>
 
@@ -65,7 +69,11 @@ export default function IslandHeader() {
               className="relative group py-2"
             >
               <span className={`label transition-colors duration-500 ${
-                location.pathname === link.path ? "text-gold" : "text-foreground/70 group-hover:text-foreground"
+                location.pathname === link.path 
+                  ? "text-gold" 
+                  : isDarkThemeNeeded
+                    ? "text-white/70 group-hover:text-white"
+                    : "text-foreground/70 group-hover:text-foreground"
               }`}>
                 {link.name}
               </span>
@@ -87,7 +95,11 @@ export default function IslandHeader() {
 
           {/* Mobile Toggle */}
           <button 
-            className="md:hidden text-foreground p-2 -mr-1 bg-black/5 rounded-full transition-transform active:scale-90" 
+            className={`md:hidden p-2 -mr-1 rounded-full transition-transform active:scale-90 ${
+              isDarkThemeNeeded 
+                ? "text-white bg-white/10 hover:bg-white/20" 
+                : "text-foreground bg-black/5 hover:bg-black/10"
+            }`} 
             onClick={() => setIsOpen(true)}
             aria-label="Open Menu"
           >
