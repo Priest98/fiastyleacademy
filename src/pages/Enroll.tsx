@@ -4,8 +4,41 @@ import { useState } from "react";
 
 const steps = ["Program","Details","Payment"];
 
+const programs = [
+  { n: "3 Month Intermediate Class", p: "₦100,000", price: "₦100,000", nameShort: "Intermediate Class" },
+  { n: "3 Month Advanced Class", p: "₦100,000", price: "₦100,000", nameShort: "Advanced Class" },
+  { n: "1 Month Corsetry Masterclass", p: "₦50,000", price: "₦50,000", nameShort: "Corsetry Masterclass" }
+];
+
 export default function Enroll() {
   const [step, setStep] = useState(0);
+  const [selectedProgram, setSelectedProgram] = useState(0);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    city: "",
+    portfolioLink: ""
+  });
+
+  const handleCompleteRegistration = () => {
+    const prog = programs[selectedProgram];
+    const message = `Hello Fiatstyle Academy, I have completed the bank transfer payment for enrollment.
+
+Details:
+- Name: ${formData.firstName} ${formData.lastName}
+- Email: ${formData.email}
+- Phone: ${formData.phone}
+- City: ${formData.city}
+- Program: ${prog.n}
+- Amount: ${prog.p}`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/2348105073034?text=${encodedMessage}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <PublicLayout>
       <section className="editorial-container section-padding-lg">
@@ -28,13 +61,15 @@ export default function Enroll() {
             {step===0 && (
               <div className="space-y-4">
                 <h2 className="font-display text-xl md:text-2xl">Choose your program</h2>
-                {[
-                  { n: "3 Month Intermediate Class", p: "₦100,000" },
-                  { n: "3 Month Advanced Class", p: "₦100,000" },
-                  { n: "1 Month Corsetry Masterclass", p: "₦50,000" }
-                ].map((item,i)=>(
+                {programs.map((item,i)=>(
                   <label key={i} className="flex items-center gap-4 p-4 md:p-5 rounded-none border border-black/10 cursor-pointer hover:bg-neutral-50 transition-colors">
-                    <input type="radio" name="prog" defaultChecked={i===0} className="accent-black" />
+                    <input 
+                      type="radio" 
+                      name="prog" 
+                      checked={selectedProgram===i} 
+                      onChange={() => setSelectedProgram(i)}
+                      className="accent-black" 
+                    />
                     <div className="flex flex-col">
                       <span className="font-display text-base md:text-lg uppercase tracking-tight">{item.n}</span>
                       <span className="text-xs text-muted-foreground">{item.p}</span>
@@ -45,12 +80,56 @@ export default function Enroll() {
             )}
             {step===1 && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
-                {["First name","Last name","Email","Phone","City","Portfolio link"].map(l=>(
-                  <div key={l}>
-                    <label className="label text-muted-foreground mb-2 block">{l}</label>
-                    <input className="mt-2 w-full bg-transparent border-b border-black/10 focus:border-black outline-none py-2 text-sm transition-all" />
-                  </div>
-                ))}
+                <div>
+                  <label className="label text-muted-foreground mb-2 block">First name</label>
+                  <input 
+                    value={formData.firstName}
+                    onChange={e => setFormData({ ...formData, firstName: e.target.value })}
+                    className="mt-2 w-full bg-transparent border-b border-black/10 focus:border-black outline-none py-2 text-sm transition-all" 
+                  />
+                </div>
+                <div>
+                  <label className="label text-muted-foreground mb-2 block">Last name</label>
+                  <input 
+                    value={formData.lastName}
+                    onChange={e => setFormData({ ...formData, lastName: e.target.value })}
+                    className="mt-2 w-full bg-transparent border-b border-black/10 focus:border-black outline-none py-2 text-sm transition-all" 
+                  />
+                </div>
+                <div>
+                  <label className="label text-muted-foreground mb-2 block">Email</label>
+                  <input 
+                    type="email"
+                    value={formData.email}
+                    onChange={e => setFormData({ ...formData, email: e.target.value })}
+                    className="mt-2 w-full bg-transparent border-b border-black/10 focus:border-black outline-none py-2 text-sm transition-all" 
+                  />
+                </div>
+                <div>
+                  <label className="label text-muted-foreground mb-2 block">Phone</label>
+                  <input 
+                    type="tel"
+                    value={formData.phone}
+                    onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                    className="mt-2 w-full bg-transparent border-b border-black/10 focus:border-black outline-none py-2 text-sm transition-all" 
+                  />
+                </div>
+                <div>
+                  <label className="label text-muted-foreground mb-2 block">City</label>
+                  <input 
+                    value={formData.city}
+                    onChange={e => setFormData({ ...formData, city: e.target.value })}
+                    className="mt-2 w-full bg-transparent border-b border-black/10 focus:border-black outline-none py-2 text-sm transition-all" 
+                  />
+                </div>
+                <div>
+                  <label className="label text-muted-foreground mb-2 block">Portfolio link</label>
+                  <input 
+                    value={formData.portfolioLink}
+                    onChange={e => setFormData({ ...formData, portfolioLink: e.target.value })}
+                    className="mt-2 w-full bg-transparent border-b border-black/10 focus:border-black outline-none py-2 text-sm transition-all" 
+                  />
+                </div>
               </div>
             )}
             {step===2 && (
@@ -58,8 +137,8 @@ export default function Enroll() {
                 <h2 className="font-display text-xl md:text-2xl">Payment Selection</h2>
                 <div className="rounded-xl border border-black/5 p-8 bg-neutral-50 shadow-soft">
                   <p className="label text-muted-foreground">Bank Transfer (Recommended)</p>
-                  <p className="mt-2 font-display text-lg">Guaranty Trust Bank</p>
-                  <p className="font-mono text-sm tracking-widest mt-1">0123456789 · Fiatstyle Academy</p>
+                  <p className="mt-2 font-display text-lg">Opay</p>
+                  <p className="font-mono text-sm tracking-widest mt-1">9024631879 · Rofiat Toyin</p>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <button className="btn-luxury-secondary w-full">Card Payment</button>
@@ -70,7 +149,16 @@ export default function Enroll() {
 
             <div className="mt-12 flex justify-between items-center">
               <button onClick={()=>setStep(s=>Math.max(0,s-1))} className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors">← Previous</button>
-              <button onClick={()=>setStep(s=>Math.min(2,s+1))} className="btn-luxury-primary px-10 py-4 text-[10px]">
+              <button 
+                onClick={() => {
+                  if (step === 2) {
+                    handleCompleteRegistration();
+                  } else {
+                    setStep(s => Math.min(2, s + 1));
+                  }
+                }} 
+                className="btn-luxury-primary px-10 py-4 text-[10px]"
+              >
                 {step===2?"Complete Registration":"Next Step"}
               </button>
             </div>
@@ -79,12 +167,12 @@ export default function Enroll() {
           <aside className="rounded-xl border border-black/5 p-8 bg-neutral-50 h-max shadow-luxury">
             <p className="label text-muted-foreground">Application Details</p>
             <div className="mt-4 space-y-3 text-sm">
-              <Row l="Intermediate Class" v="₦100,000"/>
+              <Row l={programs[selectedProgram].nameShort} v={programs[selectedProgram].price}/>
               <Row l="Tax / Fees" v="Included"/>
             </div>
             <div className="mt-8 pt-8 border-t border-black/5 flex justify-between items-end">
               <span className="label">Total</span>
-              <span className="font-display text-4xl">₦100,000</span>
+              <span className="font-display text-4xl">{programs[selectedProgram].price}</span>
             </div>
             <ul className="mt-10 space-y-4 text-[10px] text-muted-foreground uppercase tracking-widest font-medium">
               {["Secure SSL Payment","Lifetime Alumni Group","2026 Batch Enrollment", "Join 1,000+ Successful Alumni"].map(x=>(
